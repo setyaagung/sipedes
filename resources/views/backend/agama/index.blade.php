@@ -1,6 +1,6 @@
 @extends('layouts.back-main')
 
-@section('title', 'Kelola Pengguna')
+@section('title', 'Kelola Data Agama')
 
 @section('content')
     <div class="container-fluid">
@@ -8,9 +8,9 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Kelola Pengguna</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Kelola Data Agama</h6>
                         <div class="float-right">
-                            <a href="{{ route('user.create')}}" class="btn btn-sm btn-primary">Tambah</a>
+                            <a href="{{ route('agama.create')}}" class="btn btn-sm btn-primary">Tambah</a>
                         </div>
                     </div>
                     <div class="card-body">
@@ -43,31 +43,18 @@
                                 <thead>
                                     <tr>
                                         <th>NO</th>
-                                        <th>NAMA</th>
-                                        <th>EMAIL</th>
-                                        <th>STATUS</th>
-                                        <th>HAK AKSES</th>
+                                        <th>NAMA AGAMA</th>
                                         <th>AKSI</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($users as $user)
+                                    @foreach ($agamas as $agama)
                                         <tr>
                                             <td>{{ $loop->iteration}}</td>
-                                            <td>{{ $user->name}}</td>
-                                            <td>{{ $user->email}}</td>
+                                            <td>{{ $agama->nama_agama}}</td>
                                             <td>
-                                                @if ($user->status == 1)
-                                                    <input type="checkbox" class="status" name="status" data-id="{{ $user->id_user}}" checked>
-                                                @else
-                                                    <input type="checkbox" class="status" name="status" data-id="{{ $user->id_user}}">
-                                                @endif
-                                            </td>
-                                            <td>{{ strtoupper($user->role->nama_role)}}</td>
-                                            <td>
-                                                <a href="{{ route('user.show',$user->id_user)}}" class="btn btn-sm btn-success"><i class="fas fa-cog"></i> Reset Password</a>
-                                                <a href="{{ route('user.edit',$user->id_user)}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
-                                                <form action="{{ route('user.destroy', $user->id_user)}}" method="POST" class="d-inline">
+                                                <a href="{{ route('agama.edit',$agama->id_agama)}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
+                                                <form action="{{ route('agama.destroy', $agama->id_agama)}}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data ini??')"><i class="fas fa-trash"></i> Hapus</button>
@@ -84,25 +71,3 @@
         </div>
     </div>
 @endsection
-
-@push('scripts')
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('.status').click(function (e) {
-                e.preventDefault();
-                var id = $(this).attr('data-id');
-
-                $.ajax({
-                    url: '/update-status/'+id,
-                    type: 'GET',
-                    success: function (response) {
-                        alert('Status User Berhasil Diperbarui') ? "": location.reload();
-                        //alertify.set('notifier', 'position', 'top-right');
-                        //alertify.success(response.status);
-                    }
-                });
-
-            });
-        });
-    </script>
-@endpush
