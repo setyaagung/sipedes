@@ -26,6 +26,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
     //agama
     Route::resource('agama', 'AgamaController');
+    //pekerjaan
+    Route::resource('pekerjaan', 'PekerjaanController');
     //user
     Route::resource('user', 'UserController');
     Route::get('/update-status/{id}', 'UserController@update_status');

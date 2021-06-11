@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Agama;
+use App\Model\Pekerjaan;
 use Illuminate\Http\Request;
 
-class AgamaController extends Controller
+class PekerjaanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class AgamaController extends Controller
      */
     public function index()
     {
-        $agamas = Agama::orderBy('nama_agama', 'ASC')->get();
-        return view('backend.agama.index', compact('agamas'));
+        $pekerjaans = Pekerjaan::orderBy('nama_pekerjaan', 'ASC')->get();
+        return view('backend.pekerjaan.index', compact('pekerjaans'));
     }
 
     /**
@@ -25,7 +25,7 @@ class AgamaController extends Controller
      */
     public function create()
     {
-        return view('backend.agama.create');
+        return view('backend.pekerjaan.create');
     }
 
     /**
@@ -37,9 +37,9 @@ class AgamaController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $data['nama_agama'] = strtoupper($request->input('nama_agama'));
-        Agama::create($data);
-        return redirect()->route('agama.index')->with('create', 'Data agama berhasil ditambahkan');
+        $data['nama_pekerjaan'] = strtoupper($request->input('nama_pekerjaan'));
+        Pekerjaan::create($data);
+        return redirect()->route('pekerjaan.index')->with('create', 'Data pekerjaan berhasil ditambahkan');
     }
 
     /**
@@ -61,8 +61,8 @@ class AgamaController extends Controller
      */
     public function edit($id)
     {
-        $agama = Agama::findOrFail($id);
-        return view('backend.agama.edit', compact('agama'));
+        $pekerjaan = Pekerjaan::findOrFail($id);
+        return view('backend.pekerjaan.edit', compact('pekerjaan'));
     }
 
     /**
@@ -74,11 +74,11 @@ class AgamaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $agama = Agama::findOrFail($id);
+        $pekerjaan = Pekerjaan::findOrFail($id);
         $data = $request->all();
-        $data['nama_agama'] = strtoupper($request->input('nama_agama'));
-        $agama->update($data);
-        return redirect()->route('agama.index')->with('update', 'Data agama berhasil diperbarui');
+        $data['nama_pekerjaan'] = strtoupper($request->input('nama_pekerjaan'));
+        $pekerjaan->update($data);
+        return redirect()->route('pekerjaan.index')->with('update', 'Data pekerjaan berhasil diperbarui');
     }
 
     /**
@@ -89,8 +89,8 @@ class AgamaController extends Controller
      */
     public function destroy($id)
     {
-        $agama = Agama::findOrFail($id);
-        $agama->delete();
-        return redirect()->route('agama.index')->with('delete', 'Data agama berhasil dihapus');
+        $pekerjaan = Pekerjaan::findOrFail($id);
+        $pekerjaan->delete();
+        return redirect()->route('pekerjaan.index')->with('delete', 'Data pekerjaan berhasil dihapus');
     }
 }
