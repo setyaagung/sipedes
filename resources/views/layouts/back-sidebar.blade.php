@@ -33,7 +33,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item {{ (request()->segment(1) == 'penduduk') ? 'active' : '' }}" href="{{ route('penduduk.index')}}">Penduduk</a>
-                <a class="collapse-item" href="cards.html">Kartu Keluarga</a>
+                <a class="collapse-item {{ (request()->segment(1) == 'kartu-keluarga') ? 'active' : '' }}" href="{{ route('kartu-keluarga.index')}}">Kartu Keluarga</a>
             </div>
         </div>
     </li>

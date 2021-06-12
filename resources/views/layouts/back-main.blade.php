@@ -19,7 +19,9 @@
     <link href="{{ asset('assets/css/sb-admin-2.min.css')}}" rel="stylesheet">
     <!-- Custom styles for this page -->
     <link href="{{ asset('assets/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
-
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('assets/vendor/select2/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
 </head>
 
 <body id="page-top">
@@ -88,6 +90,8 @@
 
     <!-- Page level custom scripts -->
     <script src="{{ asset('assets/js/demo/datatables-demo.js')}}"></script>
+    <!-- Select2 -->
+    <script src="{{ asset('assets/vendor/select2/js/select2.full.min.js')}}"></script>
     @stack('scripts')
 </body>
 
