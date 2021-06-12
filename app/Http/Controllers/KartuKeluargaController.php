@@ -40,7 +40,7 @@ class KartuKeluargaController extends Controller
     {
         $data = $request->all();
         $message = [
-            'no_kk.unique' => 'Nomor KK yang diinputkan sudah digunakan penduduk lain',
+            'no_kk.unique' => 'Nomor KK yang diinputkan sudah digunakan. Silahkan ganti dengan nomor kk yang lain',
             'id_kepala_keluarga.unique' => 'Kepala Keluarga yang diinputkan sudah sebagai kepala keluarga di KK lain'
         ];
         $request->validate([
@@ -59,7 +59,6 @@ class KartuKeluargaController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -70,7 +69,9 @@ class KartuKeluargaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $kartu_keluarga = KartuKeluarga::findOrFail($id);
+        $penduduks = Penduduk::orderBy('nama', 'ASC')->get();
+        return view('backend.kartu-keluarga.edit', compact('kartu_keluarga', 'penduduks'));
     }
 
     /**
@@ -82,7 +83,18 @@ class KartuKeluargaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $kartu_keluarga = KartuKeluarga::findOrFail($id);
+        $data = $request->all();
+        $message = [
+            'no_kk.unique' => 'Nomor KK yang diinputkan sudah digunakan. Silahkan ganti dengan nomor kk yang lain',
+            'id_kepala_keluarga.unique' => 'Kepala Keluarga yang diinputkan sudah sebagai kepala keluarga di KK lain'
+        ];
+        $request->validate([
+            'no_kk' => 'required|string|unique:kartu_keluarga,no_kk,' . $id . ',id_kk',
+            'id_kepala_keluarga' => 'required|string|unique:kartu_keluarga,id_kepala_keluarga,' . $id . ',id_kepala_keluarga',
+        ], $message);
+        $kartu_keluarga->update($data);
+        return redirect()->route('kartu-keluarga.index')->with('update', 'Data kartu keluarga berhasil diperbarui');
     }
 
     /**
@@ -93,6 +105,8 @@ class KartuKeluargaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $kartu_keluarga = KartuKeluarga::findOrFail($id);
+        $kartu_keluarga->delete();
+        return redirect()->route('kartu-keluarga.index')->with('delete', 'Data kartu keluarga berhasil dihapus');
     }
 }
