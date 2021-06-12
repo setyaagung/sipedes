@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Pekerjaan;
+use App\Model\Penduduk;
 use Illuminate\Http\Request;
 
-class PekerjaanController extends Controller
+class PendudukController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class PekerjaanController extends Controller
      */
     public function index()
     {
-        $pekerjaans = Pekerjaan::orderBy('nama_pekerjaan', 'ASC')->get();
-        return view('backend.pekerjaan.index', compact('pekerjaans'));
+        $penduduks = Penduduk::orderBy('nama', 'ASC')->get();
+        return view('backend.penduduk.index', compact('penduduks'));
     }
 
     /**
@@ -25,7 +25,7 @@ class PekerjaanController extends Controller
      */
     public function create()
     {
-        return view('backend.pekerjaan.create');
+        return view('backend.penduduk.create');
     }
 
     /**
@@ -37,9 +37,14 @@ class PekerjaanController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $data['nama_pekerjaan'] = strtoupper($request->input('nama_pekerjaan'));
-        Pekerjaan::create($data);
-        return redirect()->route('pekerjaan.index')->with('create', 'Data pekerjaan berhasil ditambahkan');
+        $message = [
+            'nik.unique' => 'NIK yang diinputkan sudah digunakan penduduk lain'
+        ];
+        $request->validate([
+            'nik' => 'required|string|unique:penduduk',
+        ], $message);
+        Penduduk::create($data);
+        return redirect()->route('penduduk.index')->with('create', 'Data penduduk berhasil ditambahkan');
     }
 
     /**
@@ -61,8 +66,8 @@ class PekerjaanController extends Controller
      */
     public function edit($id)
     {
-        $pekerjaan = Pekerjaan::findOrFail($id);
-        return view('backend.pekerjaan.edit', compact('pekerjaan'));
+        $penduduk = Penduduk::findOrFail($id);
+        return view('backend.penduduk.edit', compact('penduduk'));
     }
 
     /**
@@ -74,11 +79,16 @@ class PekerjaanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pekerjaan = Pekerjaan::findOrFail($id);
+        $penduduk = Penduduk::findOrFail($id);
         $data = $request->all();
-        $data['nama_pekerjaan'] = strtoupper($request->input('nama_pekerjaan'));
-        $pekerjaan->update($data);
-        return redirect()->route('pekerjaan.index')->with('update', 'Data pekerjaan berhasil diperbarui');
+        $message = [
+            'nik.unique' => 'NIK yang diinputkan sudah digunakan penduduk lain'
+        ];
+        $request->validate([
+            'nik' => 'required|string|unique:penduduk,nik,' . $id . ',id_penduduk',
+        ], $message);
+        $penduduk->update($data);
+        return redirect()->route('penduduk.index')->with('update', 'Data penduduk berhasil diperbarui');
     }
 
     /**
@@ -89,8 +99,8 @@ class PekerjaanController extends Controller
      */
     public function destroy($id)
     {
-        $pekerjaan = Pekerjaan::findOrFail($id);
-        $pekerjaan->delete();
-        return redirect()->route('pekerjaan.index')->with('delete', 'Data pekerjaan berhasil dihapus');
+        $penduduk = Penduduk::findOrFail($id);
+        $penduduk->delete();
+        return redirect()->route('penduduk.index')->with('delete', 'Data penduduk berhasil dihapus');
     }
 }

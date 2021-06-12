@@ -24,10 +24,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
-    //agama
-    Route::resource('agama', 'AgamaController');
-    //pekerjaan
-    Route::resource('pekerjaan', 'PekerjaanController');
+    //penduduk
+    Route::resource('penduduk', 'PendudukController');
     //user
     Route::resource('user', 'UserController');
     Route::get('/update-status/{id}', 'UserController@update_status');

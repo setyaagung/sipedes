@@ -24,7 +24,7 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item {{ (request()->segment(1) == 'agama') ? 'active' : '' }} {{ (request()->segment(1) == 'pekerjaan') ? 'active' : '' }}">
+    <li class="nav-item {{ (request()->segment(1) == 'penduduk') ? 'active' : '' }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-folder"></i>
@@ -32,9 +32,7 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item {{ (request()->segment(1) == 'agama') ? 'active' : '' }}" href="{{ route('agama.index')}}">Agama</a>
-                <a class="collapse-item {{ (request()->segment(1) == 'pekerjaan') ? 'active' : '' }}" href="{{ route('pekerjaan.index')}}">Pekerjaan</a>
-                <a class="collapse-item" href="cards.html">Penduduk</a>
+                <a class="collapse-item {{ (request()->segment(1) == 'penduduk') ? 'active' : '' }}" href="{{ route('penduduk.index')}}">Penduduk</a>
                 <a class="collapse-item" href="cards.html">Kartu Keluarga</a>
             </div>
         </div>

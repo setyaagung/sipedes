@@ -1,6 +1,6 @@
 @extends('layouts.back-main')
 
-@section('title', 'Kelola Data Agama')
+@section('title', 'Kelola Data Penduduk')
 
 @section('content')
     <div class="container-fluid">
@@ -8,9 +8,9 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Kelola Data Agama</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Kelola Data Penduduk</h6>
                         <div class="float-right">
-                            <a href="{{ route('agama.create')}}" class="btn btn-sm btn-primary">Tambah</a>
+                            <a href="{{ route('penduduk.create')}}" class="btn btn-sm btn-primary">Tambah</a>
                         </div>
                     </div>
                     <div class="card-body">
@@ -43,18 +43,34 @@
                                 <thead>
                                     <tr>
                                         <th>NO</th>
-                                        <th>NAMA AGAMA</th>
+                                        <th>NIK</th>
+                                        <th>NAMA</th>
+                                        <th>TANGGAL LAHIR</th>
+                                        <th>STATUS</th>
                                         <th>AKSI</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($agamas as $agama)
+                                    @foreach ($penduduks as $penduduk)
                                         <tr>
                                             <td>{{ $loop->iteration}}</td>
-                                            <td>{{ $agama->nama_agama}}</td>
+                                            <td>{{ $penduduk->nik}}</td>
+                                            <td>{{ $penduduk->nama}}</td>
+                                            <td>{{ \Carbon\Carbon::parse($penduduk->tanggal_lahir)->isoFormat('D MMMM Y')}}</td>
                                             <td>
-                                                <a href="{{ route('agama.edit',$agama->id_agama)}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
-                                                <form action="{{ route('agama.destroy', $agama->id_agama)}}" method="POST" class="d-inline">
+                                                @if ($penduduk->status == 'Tinggal Tetap')
+                                                    <span class="badge badge-primary">Tinggal Tetap</span>
+                                                @elseif($penduduk->status == 'Pindah Datang')
+                                                    <span class="badge badge-success">Pindah Datang</span>
+                                                @elseif($penduduk->status == 'Pindah Keluar')
+                                                    <span class="badge badge-info">Pindah Keluar</span>
+                                                @else
+                                                    <span class="badge badge-danger">Meninggal</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('penduduk.edit',$penduduk->id_penduduk)}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
+                                                <form action="{{ route('penduduk.destroy', $penduduk->id_penduduk)}}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data ini??')"><i class="fas fa-trash"></i> Hapus</button>
