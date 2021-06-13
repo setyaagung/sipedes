@@ -29,7 +29,9 @@ class KelahiranController extends Controller
     public function create()
     {
         $kartu_keluargas = KartuKeluarga::orderBy('no_kk', 'ASC')->get();
-        return view('backend.kelahiran.create', compact('kartu_keluargas'));
+        $penduduks = Penduduk::orderBy('nama')->where('jenis_kelamin', 'laki')->get();
+        $pendudukp = Penduduk::orderBy('nama')->where('jenis_kelamin', 'perempuan')->get();
+        return view('backend.kelahiran.create', compact('kartu_keluargas', 'penduduks', 'pendudukp'));
     }
 
     /**
@@ -118,9 +120,14 @@ class KelahiranController extends Controller
         return redirect()->route('kelahiran.index')->with('delete', 'Data kelahiran berhasil dihapus');
     }
 
-    public function getKK(Request $request)
+    public function getAyah(Request $request)
     {
-        $detailKK = KartuKeluarga::where('id_kk', $request->id)->first();
-        return \response()->json($detailKK);
+        $detailAyah = Penduduk::where('id_penduduk', $request->id)->first();
+        return \response()->json($detailAyah);
+    }
+    public function getIbu(Request $request)
+    {
+        $detailIbu = Penduduk::where('id_penduduk', $request->id)->first();
+        return \response()->json($detailIbu);
     }
 }

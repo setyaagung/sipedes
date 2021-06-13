@@ -18,10 +18,13 @@
                                     <a class="nav-link active" id="form1-tab" data-toggle="tab" href="#form1" role="tab">Data Bayi</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="form2-tab" data-toggle="tab" href="#form2" role="tab">Data Orang Tua</a>
+                                    <a class="nav-link" id="form2-tab" data-toggle="tab" href="#form2" role="tab">Data Ayah</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="form3-tab" data-toggle="tab" href="#form3" role="tab">Data Kelahiran</a>
+                                    <a class="nav-link" id="form3-tab" data-toggle="tab" href="#form3" role="tab">Data Ibu</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="form4-tab" data-toggle="tab" href="#form4" role="tab">Data Pelapor</a>
                                 </li>
                             </ul>
                             <div class="tab-content" id="myTabContent">
@@ -29,10 +32,13 @@
                                     @include('backend.kelahiran.form-create.data-bayi')
                                 </div>
                                 <div class="tab-pane fade" id="form2" role="tabpanel" aria-labelledby="form2-tab">
-                                    @include('backend.kelahiran.form-create.data-orangtua')
+                                    @include('backend.kelahiran.form-create.data-ayah')
                                 </div>
                                 <div class="tab-pane fade" id="form3" role="tabpanel" aria-labelledby="form3-tab">
-                                    @include('backend.kelahiran.form-create.data-kelahiran')
+                                    @include('backend.kelahiran.form-create.data-ibu')
+                                </div>
+                                <div class="tab-pane fade" id="form4" role="tabpanel" aria-labelledby="form4-tab">
+                                    @include('backend.kelahiran.form-create.data-pelapor')
                                 </div>
                             </div>
                         </form>
@@ -45,32 +51,58 @@
 
 @push('scripts')
     <script>
-        $('.kk').select2({
-            placeholder: "-- Pilih Kepala Keluarga --",
+        $('.ayah').select2({
+            placeholder: "-- Pilih Ayah --",
+            allowClear: true,
+            theme: 'bootstrap4'
+        });
+        $('.ibu').select2({
+            placeholder: "-- Pilih Ayah --",
             allowClear: true,
             theme: 'bootstrap4'
         });
 
-        $("#id_kk").on("change",function(){
-            var id_kk = $(this).val();
-            var a = $(this).parent();
-            //console.log(id_kk);
+        $("#id_ayah").on("change",function(){
+            var id_ayah = $(this).val();
+            //console.log(id_ayah);
             $.ajax({
                 type: 'GET',
                 dataType: 'json',
-                url: "/kelahiran/getkk",
-                data:{'id':id_kk},
+                url: "/kelahiran/getayah",
+                data:{'id':id_ayah},
                 success: function(data){
                     $.each(data, function(key, value){
-                        $('textarea[name="alamat_kk"]').val(data.alamat_kk);
-                        $('input[name="rt_kk"]').val(data.rt_kk);
-                        $('input[name="rw_kk"]').val(data.rw_kk);
-                        $('input[name="kelurahan_kk"]').val(data.kelurahan_kk);
-                        $('input[name="kecamatan_kk"]').val(data.kecamatan_kk);
-                        $('input[name="kode_pos_kk"]').val(data.kode_pos_kk);
-                        $('input[name="kota_kk"]').val(data.kota_kk);
-                        $('input[name="provinsi_kk"]').val(data.provinsi_kk);
-                        $('input[name="negara_kk"]').val(data.negara_kk);
+                        $('textarea[name="alamat_ayah"]').val(data.alamat_ktp);
+                        $('input[name="rt_ayah"]').val(data.rt);
+                        $('input[name="rw_ayah"]').val(data.rw);
+                        $('input[name="kelurahan_ayah"]').val(data.kelurahan);
+                        $('input[name="kecamatan_ayah"]').val(data.kecamatan);
+                        $('input[name="kota_ayah"]').val(data.kota);
+                        $('input[name="provinsi_ayah"]').val(data.provinsi);
+                        $('input[name="negara_ayah"]').val(data.negara);
+                    });
+                }
+            });
+        });
+
+        $("#id_ibu").on("change",function(){
+            var id_ibu = $(this).val();
+            //console.log(id_ibu);
+            $.ajax({
+                type: 'GET',
+                dataType: 'json',
+                url: "/kelahiran/getibu",
+                data:{'id':id_ibu},
+                success: function(data){
+                    $.each(data, function(key, value){
+                        $('textarea[name="alamat_ibu"]').val(data.alamat_ktp);
+                        $('input[name="rt_ibu"]').val(data.rt);
+                        $('input[name="rw_ibu"]').val(data.rw);
+                        $('input[name="kelurahan_ibu"]').val(data.kelurahan);
+                        $('input[name="kecamatan_ibu"]').val(data.kecamatan);
+                        $('input[name="kota_ibu"]').val(data.kota);
+                        $('input[name="provinsi_ibu"]').val(data.provinsi);
+                        $('input[name="negara_ibu"]').val(data.negara);
                     });
                 }
             });

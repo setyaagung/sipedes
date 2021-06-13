@@ -16,7 +16,7 @@ class CreateKartuKeluargaTable extends Migration
         Schema::create('kartu_keluarga', function (Blueprint $table) {
             $table->bigIncrements('id_kk');
             $table->bigInteger('no_kk')->unique();
-            $table->bigInteger('id_kepala_keluarga')->unique();
+            $table->bigInteger('id_penduduk')->unique();
             $table->string('alamat_kk');
             $table->integer('rt_kk');
             $table->integer('rw_kk');

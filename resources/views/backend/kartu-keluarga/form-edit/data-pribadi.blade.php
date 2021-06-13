@@ -9,13 +9,13 @@
 </div>
 <div class="form-group">
     <label for="">Kepala Keluarga</label>
-    <select name="id_kepala_keluarga" class="form-control @error('id_kepala_keluarga') is-invalid @enderror kepala-keluarga" style="width: 100%;" required>
+    <select name="id_penduduk" class="form-control @error('id_penduduk') is-invalid @enderror kepala-keluarga" style="width: 100%;" required>
         <option value=""></option>
         @foreach ($penduduks as $penduduk)
-            <option value="{{ $penduduk->id_penduduk}}" {{ $kartu_keluarga->id_kepala_keluarga == $penduduk->id_penduduk ? 'selected':''}}>{{  $penduduk->nik}} - {{strtoupper($penduduk->nama)}}</option>
+            <option value="{{ $penduduk->id_penduduk}}" {{ $kartu_keluarga->id_penduduk == $penduduk->id_penduduk ? 'selected':''}}>{{  $penduduk->nik}} - {{strtoupper($penduduk->nama)}}</option>
         @endforeach
     </select>
-    @error('id_kepala_keluarga')
+    @error('id_penduduk')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
         </span>

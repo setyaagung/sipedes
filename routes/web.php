@@ -29,7 +29,8 @@ Route::middleware(['auth'])->group(function () {
     //kartu keluarga
     Route::resource('kartu-keluarga', 'KartuKeluargaController');
     //kelahiran
-    Route::get('/kelahiran/getkk', 'KelahiranController@getKK');
+    Route::get('/kelahiran/getayah', 'KelahiranController@getAyah');
+    Route::get('/kelahiran/getibu', 'KelahiranController@getIbu');
     Route::resource('kelahiran', 'KelahiranController');
     //user
     Route::resource('user', 'UserController');

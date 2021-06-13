@@ -42,16 +42,16 @@ class KartuKeluargaController extends Controller
         $data = $request->all();
         $message = [
             'no_kk.unique' => 'Nomor KK yang diinputkan sudah digunakan. Silahkan ganti dengan nomor kk yang lain',
-            'id_kepala_keluarga.unique' => 'Kepala Keluarga yang diinputkan sudah sebagai kepala keluarga di KK lain'
+            'id_penduduk.unique' => 'Kepala Keluarga yang diinputkan sudah sebagai kepala keluarga di KK lain'
         ];
         $request->validate([
             'no_kk' => 'required|string|unique:kartu_keluarga',
-            'id_kepala_keluarga' => 'required|string|unique:kartu_keluarga',
+            'id_penduduk' => 'required|string|unique:kartu_keluarga',
         ], $message);
         $kk = KartuKeluarga::create($data);
         DetailKartuKeluarga::create([
             'id_kk' => $kk->id_kk,
-            'id_penduduk' => $request->input('id_kepala_keluarga'),
+            'id_penduduk' => $request->input('id_penduduk'),
             'status' => 'Kepala Keluarga'
         ]);
         return redirect()->route('kartu-keluarga.index')->with('create', 'Data kartu keluarga berhasil ditambahkan');
@@ -94,15 +94,15 @@ class KartuKeluargaController extends Controller
         $data = $request->all();
         $message = [
             'no_kk.unique' => 'Nomor KK yang diinputkan sudah digunakan. Silahkan ganti dengan nomor kk yang lain',
-            'id_kepala_keluarga.unique' => 'Kepala Keluarga yang diinputkan sudah sebagai kepala keluarga di KK lain'
+            'id_penduduk.unique' => 'Kepala Keluarga yang diinputkan sudah sebagai kepala keluarga di KK lain'
         ];
         $request->validate([
             'no_kk' => 'required|string|unique:kartu_keluarga,no_kk,' . $id . ',id_kk',
-            'id_kepala_keluarga' => 'required|string|unique:kartu_keluarga,id_kepala_keluarga,' . $id . ',id_kepala_keluarga',
+            'id_penduduk' => 'required|string|unique:kartu_keluarga,id_penduduk,' . $id . ',id_penduduk',
         ], $message);
         $kartu_keluarga->update($data);
         $detail_kartu_keluarga->update([
-            'id_penduduk' => $request->input('id_kepala_keluarga')
+            'id_penduduk' => $request->input('id_penduduk')
         ]);
         return redirect()->route('kartu-keluarga.index')->with('update', 'Data kartu keluarga berhasil diperbarui');
     }
