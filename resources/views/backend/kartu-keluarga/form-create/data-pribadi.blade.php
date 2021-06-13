@@ -12,7 +12,7 @@
     <select name="id_kepala_keluarga" class="form-control @error('id_kepala_keluarga') is-invalid @enderror kepala-keluarga" style="width: 100%;" required>
         <option value=""></option>
         @foreach ($penduduks as $penduduk)
-            <option value="{{ $penduduk->id_penduduk}}" {{ old('id_kepala_keluarga') == $penduduk->id_penduduk ? 'selected':''}}>{{ strtoupper($penduduk->nama)}}</option>
+            <option value="{{ $penduduk->id_penduduk}}" {{ old('id_kepala_keluarga') == $penduduk->id_penduduk ? 'selected':''}}>{{  $penduduk->nik}} - {{strtoupper($penduduk->nama)}}</option>
         @endforeach
     </select>
     @error('id_kepala_keluarga')

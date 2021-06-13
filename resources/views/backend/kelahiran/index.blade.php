@@ -1,6 +1,6 @@
 @extends('layouts.back-main')
 
-@section('title', 'Kelola Data Penduduk')
+@section('title', 'Kelola Data Kelahiran')
 
 @section('content')
     <div class="container-fluid">
@@ -8,9 +8,9 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Kelola Data Penduduk</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Kelola Data Kelahiran</h6>
                         <div class="float-right">
-                            <a href="{{ route('penduduk.create')}}" class="btn btn-sm btn-primary">Tambah</a>
+                            <a href="{{ route('kelahiran.create')}}" class="btn btn-sm btn-primary">Tambah</a>
                         </div>
                     </div>
                     <div class="card-body">
@@ -43,42 +43,28 @@
                                 <thead>
                                     <tr>
                                         <th>NO</th>
-                                        <th>NIK</th>
-                                        <th>NAMA</th>
+                                        <th>NAMA BAYI</th>
                                         <th>JENIS KELAMIN</th>
-                                        <th>TANGGAL LAHIR</th>
-                                        <th>STATUS</th>
-                                        <th>AKSI</th>
+                                        <th>TEMPAT/TANGGAL LAHIR</th>
+                                        <th>AKSI</>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($penduduks as $penduduk)
+                                    @foreach ($kelahirans as $kelahiran)
                                         <tr>
                                             <td>{{ $loop->iteration}}</td>
-                                            <td>{{ $penduduk->nik}}</td>
-                                            <td>{{ $penduduk->nama}}</td>
+                                            <td>{{ $kelahiran->nama_bayi}}</td>
                                             <td>
-                                                @if ($penduduk->jenis_kelamin == 'laki')
+                                                @if ($kelahiran->jenis_kelamin == 'laki')
                                                     Laki - Laki
                                                 @else
                                                     Perempuan
                                                 @endif
                                             </td>
-                                            <td>{{ \Carbon\Carbon::parse($penduduk->tanggal_lahir)->isoFormat('D MMMM Y')}}</td>
+                                            <td>{{ $kelahiran->tempat_lahir}}, {{ \Carbon\Carbon::parse($kelahiran->tanggal_lahir)->isoFormat('D MMMM Y')}}</td>
                                             <td>
-                                                @if ($penduduk->status == 'Tinggal Tetap')
-                                                    <span class="badge badge-primary">Tinggal Tetap</span>
-                                                @elseif($penduduk->status == 'Pindah Datang')
-                                                    <span class="badge badge-success">Pindah Datang</span>
-                                                @elseif($penduduk->status == 'Pindah Keluar')
-                                                    <span class="badge badge-info">Pindah Keluar</span>
-                                                @else
-                                                    <span class="badge badge-danger">Meninggal</span>
-                                                @endif
-                                            </td>
-                                            <td>
-                                                <a href="{{ route('penduduk.edit',$penduduk->id_penduduk)}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
-                                                <form action="{{ route('penduduk.destroy', $penduduk->id_penduduk)}}" method="POST" class="d-inline">
+                                                <a href="{{ route('kelahiran.edit',$kelahiran->id_kelahiran)}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
+                                                <form action="{{ route('kelahiran.destroy', $kelahiran->id_kelahiran)}}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data ini??')"><i class="fas fa-trash"></i> Hapus</button>

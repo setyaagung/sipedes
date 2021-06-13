@@ -40,6 +40,15 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
     <!-- Nav Item - user -->
+    <li class="nav-item {{ (request()->segment(1) == 'kelahiran') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('kelahiran.index') }}">
+            <i class="fas fa-fw fa-baby"></i>
+            <span>Kelahiran</span>
+        </a>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+    <!-- Nav Item - user -->
     <li class="nav-item {{ (request()->segment(1) == 'user') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('user.index') }}">
             <i class="fas fa-fw fa-user"></i>
@@ -55,5 +64,5 @@
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
 
-  </ul>
-  <!-- End of Sidebar -->
+</ul>
+<!-- End of Sidebar -->

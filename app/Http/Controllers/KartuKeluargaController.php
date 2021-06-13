@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\DetailKartuKeluarga;
 use App\Model\KartuKeluarga;
 use App\Model\Penduduk;
 use Illuminate\Http\Request;
@@ -47,7 +48,12 @@ class KartuKeluargaController extends Controller
             'no_kk' => 'required|string|unique:kartu_keluarga',
             'id_kepala_keluarga' => 'required|string|unique:kartu_keluarga',
         ], $message);
-        KartuKeluarga::create($data);
+        $kk = KartuKeluarga::create($data);
+        DetailKartuKeluarga::create([
+            'id_kk' => $kk->id_kk,
+            'id_penduduk' => $request->input('id_kepala_keluarga'),
+            'status' => 'Kepala Keluarga'
+        ]);
         return redirect()->route('kartu-keluarga.index')->with('create', 'Data kartu keluarga berhasil ditambahkan');
     }
 
@@ -84,6 +90,7 @@ class KartuKeluargaController extends Controller
     public function update(Request $request, $id)
     {
         $kartu_keluarga = KartuKeluarga::findOrFail($id);
+        $detail_kartu_keluarga = DetailKartuKeluarga::where('id_kk', $kartu_keluarga->id_kk)->get()->first();
         $data = $request->all();
         $message = [
             'no_kk.unique' => 'Nomor KK yang diinputkan sudah digunakan. Silahkan ganti dengan nomor kk yang lain',
@@ -94,6 +101,9 @@ class KartuKeluargaController extends Controller
             'id_kepala_keluarga' => 'required|string|unique:kartu_keluarga,id_kepala_keluarga,' . $id . ',id_kepala_keluarga',
         ], $message);
         $kartu_keluarga->update($data);
+        $detail_kartu_keluarga->update([
+            'id_penduduk' => $request->input('id_kepala_keluarga')
+        ]);
         return redirect()->route('kartu-keluarga.index')->with('update', 'Data kartu keluarga berhasil diperbarui');
     }
 
