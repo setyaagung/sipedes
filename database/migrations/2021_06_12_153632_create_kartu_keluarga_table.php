@@ -16,7 +16,7 @@ class CreateKartuKeluargaTable extends Migration
         Schema::create('kartu_keluarga', function (Blueprint $table) {
             $table->bigIncrements('id_kk');
             $table->bigInteger('no_kk')->unique();
-            $table->bigInteger('id_penduduk')->unique();
+            $table->unsignedBigInteger('id_penduduk')->unique();
             $table->string('alamat_kk');
             $table->integer('rt_kk');
             $table->integer('rw_kk');
@@ -27,6 +27,8 @@ class CreateKartuKeluargaTable extends Migration
             $table->string('negara_kk');
             $table->integer('kode_pos_kk');
             $table->timestamps();
+
+            $table->foreign('id_penduduk')->references('id_penduduk')->on('penduduk')->onDelete('cascade');
         });
     }
 
