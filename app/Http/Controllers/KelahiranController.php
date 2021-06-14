@@ -47,15 +47,16 @@ class KelahiranController extends Controller
             'agama' => 'lainnya',
             'pendidikan' => 'Tidak Sekolah',
             'pekerjaan' => 'Tidak Ada',
-            'alamat_ktp' => $request->input('alamat_kk'),
-            'alamat_tinggal' => $request->input('alamat_kk'),
-            'rt' => $request->input('rt_kk'),
-            'rw' => $request->input('rw_kk'),
-            'kelurahan' => $request->input('kelurahan_kk'),
-            'kecamatan' => $request->input('kecamatan_kk'),
-            'kota' => $request->input('kota_kk'),
-            'provinsi' => $request->input('provinsi_kk'),
+            'alamat_ktp' => $request->input('alamat_ayah'),
+            'alamat_tinggal' => $request->input('alamat_ayah'),
+            'rt' => $request->input('rt_ayah'),
+            'rw' => $request->input('rw_ayah'),
+            'kelurahan' => $request->input('kelurahan_ayah'),
+            'kecamatan' => $request->input('kecamatan_ayah'),
+            'kota' => $request->input('kota_ayah'),
+            'provinsi' => $request->input('provinsi_ayah'),
             'negara' => 'wni',
+            'status_perkawinan' => 'Belum Kawin',
             'status' => 'Tinggal Tetap',
             'nama' => $request->input('nama_bayi'),
             'jenis_kelamin' => $request->input('jenis_kelamin'),
@@ -92,7 +93,13 @@ class KelahiranController extends Controller
      */
     public function edit($id)
     {
-        //
+        $kelahiran = Kelahiran::findOrFail($id);
+        $kartu_keluargas = KartuKeluarga::orderBy('no_kk', 'ASC')->get();
+        $ayah = Penduduk::where('id_penduduk', $kelahiran->id_ayah)->get()->first();
+        $ibu = Penduduk::where('id_penduduk', $kelahiran->id_ibu)->get()->first();
+        $penduduks = Penduduk::orderBy('nama')->where('jenis_kelamin', 'laki')->where('id_penduduk', '!=', $kelahiran->id_penduduk)->get();
+        $pendudukp = Penduduk::orderBy('nama')->where('jenis_kelamin', 'perempuan')->where('id_penduduk', '!=', $kelahiran->id_penduduk)->get();
+        return view('backend.kelahiran.edit', compact('kelahiran', 'ayah', 'ibu', 'kartu_keluargas', 'penduduks', 'pendudukp'));
     }
 
     /**
@@ -104,7 +111,37 @@ class KelahiranController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $kelahiran = Kelahiran::findOrFail($id);
+        $penduduk = Penduduk::where('id_penduduk', $kelahiran->id_penduduk)->get()->first();
+        $detail_kk = DetailKartuKeluarga::where('id_kk', $kelahiran->id_kk)->where('id_penduduk', $penduduk->id_penduduk)->get()->first();
+
+        $data = $request->all();
+        $kelahiran->update($data);
+        $penduduk->update([
+            'agama' => 'lainnya',
+            'pendidikan' => 'Tidak Sekolah',
+            'pekerjaan' => 'Tidak Ada',
+            'alamat_ktp' => $request->input('alamat_ayah'),
+            'alamat_tinggal' => $request->input('alamat_ayah'),
+            'rt' => $request->input('rt_ayah'),
+            'rw' => $request->input('rw_ayah'),
+            'kelurahan' => $request->input('kelurahan_ayah'),
+            'kecamatan' => $request->input('kecamatan_ayah'),
+            'kota' => $request->input('kota_ayah'),
+            'provinsi' => $request->input('provinsi_ayah'),
+            'negara' => 'wni',
+            'status_perkawinan' => 'Belum Kawin',
+            'status' => 'Tinggal Tetap',
+            'nama' => $request->input('nama_bayi'),
+            'jenis_kelamin' => $request->input('jenis_kelamin'),
+            'tempat_lahir' => $request->input('tempat_lahir'),
+            'tanggal_lahir' => $request->input('tanggal_lahir')
+        ]);
+        $detail_kk->update([
+            'id_kk' => $request->input('id_kk'),
+            'id_penduduk' => $penduduk->id_penduduk,
+        ]);
+        return redirect()->route('kelahiran.index')->with('update', 'Data kelahiran berhasil diperbarui');
     }
 
     /**

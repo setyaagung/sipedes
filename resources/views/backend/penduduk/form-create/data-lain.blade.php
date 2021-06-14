@@ -48,6 +48,21 @@
     @enderror
 </div>
 <div class="form-group">
+    <label for="">Status Perkawinan</label>
+    <select name="status_perkawinan" class="form-control @error('status_perkawinan') is-invalid @enderror" required>
+        <option value="">-- Pilih Status Perkawinan --</option>
+        <option value="Belum Kawin" {{ old('status_perkawinan') == 'Belum Kawin' ? 'selected':''}}>Belum Kawin</option>
+        <option value="Kawin" {{ old('status_perkawinan') == 'Kawin' ? 'selected':''}}>Kawin</option>
+        <option value="Cerai Hidup" {{ old('status_perkawinan') == 'Cerai Hidup' ? 'selected':''}}>Cerai Hidup</option>
+        <option value="Cerai Mati" {{ old('status_perkawinan') == 'Cerai Mati' ? 'selected':''}}>Cerai Mati</option>
+    </select>
+    @error('status_perkawinan')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+    @enderror
+</div>
+<div class="form-group">
     <label for="">Status Penduduk</label>
     <select name="status" class="form-control @error('status') is-invalid @enderror" required>
         <option value="">-- Pilih Status --</option>

@@ -11,8 +11,9 @@
                         <h6 class="m-0 font-weight-bold text-primary">Tambah Data Kelahiran</h6>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('kelahiran.store')}}" method="POST">
+                        <form action="{{ route('kelahiran.update',$kelahiran->id_kelahiran)}}" method="POST">
                             @csrf
+                            @method('PATCH')
                             <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link active" id="form1-tab" data-toggle="tab" href="#form1" role="tab">Data Bayi</a>
@@ -29,16 +30,16 @@
                             </ul>
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade show active" id="form1" role="tabpanel" aria-labelledby="form1-tab">
-                                    @include('backend.kelahiran.form-create.data-bayi')
+                                    @include('backend.kelahiran.form-edit.data-bayi')
                                 </div>
                                 <div class="tab-pane fade" id="form2" role="tabpanel" aria-labelledby="form2-tab">
-                                    @include('backend.kelahiran.form-create.data-ayah')
+                                    @include('backend.kelahiran.form-edit.data-ayah')
                                 </div>
                                 <div class="tab-pane fade" id="form3" role="tabpanel" aria-labelledby="form3-tab">
-                                    @include('backend.kelahiran.form-create.data-ibu')
+                                    @include('backend.kelahiran.form-edit.data-ibu')
                                 </div>
                                 <div class="tab-pane fade" id="form4" role="tabpanel" aria-labelledby="form4-tab">
-                                    @include('backend.kelahiran.form-create.data-pelapor')
+                                    @include('backend.kelahiran.form-edit.data-pelapor')
                                 </div>
                             </div>
                         </form>

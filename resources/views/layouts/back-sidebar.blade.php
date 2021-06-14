@@ -24,7 +24,7 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item {{ (request()->segment(1) == 'penduduk') ? 'active' : '' }}">
+    <li class="nav-item {{ (request()->segment(1) == 'penduduk') ? 'active' : '' }} {{ (request()->segment(1) == 'kartu-keluarga') ? 'active' : '' }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-folder"></i>

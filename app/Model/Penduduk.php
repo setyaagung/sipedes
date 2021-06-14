@@ -13,6 +13,6 @@ class Penduduk extends Model
         'jenis_kelamin', 'agama', 'pendidikan', 'pekerjaan',
         'alamat_ktp', 'alamat_tinggal', 'rt', 'rw',
         'kelurahan', 'kecamatan', 'kota', 'provinsi',
-        'negara', 'status',
+        'negara', 'status_perkawinan', 'status',
     ];
 }

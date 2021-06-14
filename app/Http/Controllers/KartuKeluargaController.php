@@ -98,11 +98,12 @@ class KartuKeluargaController extends Controller
         ];
         $request->validate([
             'no_kk' => 'required|string|unique:kartu_keluarga,no_kk,' . $id . ',id_kk',
-            'id_penduduk' => 'required|string|unique:kartu_keluarga,id_penduduk,' . $id . ',id_penduduk',
+            'id_penduduk' => 'required|string|unique:kartu_keluarga,id_penduduk,' . $id . ',id_kk',
         ], $message);
         $kartu_keluarga->update($data);
         $detail_kartu_keluarga->update([
-            'id_penduduk' => $request->input('id_penduduk')
+            'id_penduduk' => $request->input('id_penduduk'),
+            'status' => 'Kepala Keluarga'
         ]);
         return redirect()->route('kartu-keluarga.index')->with('update', 'Data kartu keluarga berhasil diperbarui');
     }
