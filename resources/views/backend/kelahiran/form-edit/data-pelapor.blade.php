@@ -36,7 +36,7 @@
 </div>
 <div class="form-group">
     <label for="">Jenis Kelamin Pelapor</label>
-    <select name="jk_pelapor" class="form-control @error('jk_pelapor') is-invalid @enderror" required>
+    <select name="jk_pelapor" class="form-control @error('jk_pelapor') is-invalid @enderror">
         <option value="">-- Pilih Jenis Kelamin --</option>
         <option value="laki" {{ $kelahiran->jk_pelapor == 'laki' ? 'selected':''}}>Laki - Laki</option>
         <option value="perempuan" {{ $kelahiran->jk_pelapor == 'perempuan' ? 'selected':''}}>Perempuan</option>

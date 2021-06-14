@@ -1,6 +1,6 @@
 <div class="form-group">
     <label for="">Nomor Kartu Keluarga dan Kepala Keluarga</label>
-    <select id="id_kk" name="id_kk" class="form-control @error('id_kk') is-invalid @enderror kk" style="width: 100%;" required>
+    <select id="id_kk" name="id_kk" class="form-control @error('id_kk') is-invalid @enderror kk" style="width: 100%;">
         <option value=""></option>
         @foreach ($kartu_keluargas as $kartu_keluarga)
             <option value="{{ $kartu_keluarga->id_kk}}" {{ old('id_kk') == $kartu_keluarga->id_kk ? 'selected':''}}>{{ $kartu_keluarga->no_kk}} - {{strtoupper($kartu_keluarga->penduduk->nama)}}</option>
@@ -14,7 +14,7 @@
 </div>
 <div class="form-group">
     <label for="">Nama Ayah</label>
-    <select id="id_ayah" name="id_ayah" class="form-control @error('id_ayah') is-invalid @enderror ayah" style="width: 100%;" required>
+    <select id="id_ayah" name="id_ayah" class="form-control @error('id_ayah') is-invalid @enderror ayah" style="width: 100%;">
         <option value=""></option>
         @foreach ($penduduks as $penduduk)
             <option value="{{ $penduduk->id_penduduk}}" {{ old('id_ayah') == $penduduk->id_penduduk ? 'selected':''}}>{{strtoupper($penduduk->nama)}}</option>

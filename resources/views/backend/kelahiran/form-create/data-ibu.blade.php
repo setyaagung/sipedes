@@ -1,6 +1,6 @@
 <div class="form-group">
     <label for="">Nama Ibu</label>
-    <select id="id_ibu" name="id_ibu" class="form-control @error('id_ibu') is-invalid @enderror ibu" style="width: 100%;" required>
+    <select id="id_ibu" name="id_ibu" class="form-control @error('id_ibu') is-invalid @enderror ibu" style="width: 100%;">
         <option value=""></option>
         @foreach ($pendudukp as $penduduk)
             <option value="{{ $penduduk->id_penduduk}}" {{ old('id_ibu') == $penduduk->id_penduduk ? 'selected':''}}>{{strtoupper($penduduk->nama)}}</option>

@@ -1,6 +1,6 @@
 <div class="form-group">
     <label for="">Agama</label>
-    <select name="agama" class="form-control @error('agama') is-invalid @enderror" required>
+    <select name="agama" class="form-control @error('agama') is-invalid @enderror">
         <option value="">-- Pilih Agama --</option>
         <option value="islam" {{ $penduduk->agama == 'islam' ? 'selected':''}}>Islam</option>
         <option value="kristen" {{ $penduduk->agama == 'kristen' ? 'selected':''}}>Kristen</option>
@@ -18,7 +18,7 @@
 </div>
 <div class="form-group">
     <label for="">Pendidikan Terakhir</label>
-    <select name="pendidikan" class="form-control @error('pendidikan') is-invalid @enderror" required>
+    <select name="pendidikan" class="form-control @error('pendidikan') is-invalid @enderror">
         <option value="">-- Pilih Pendidikan --</option>
         <option value="Tidak Sekolah" {{ $penduduk->pendidikan == 'Tidak Sekolah' ? 'selected':''}}>Tidak Sekolah</option>
         <option value="Tidak Tamat SD" {{$penduduk->pendidikan == 'Tidak Tamat SD' ? 'selected':''}}>Tidak Tamat SD</option>
@@ -40,7 +40,7 @@
 </div>
 <div class="form-group">
     <label for="">Pekerjaan</label>
-    <input type="text" class="form-control @error('pekerjaan') is-invalid @enderror" name="pekerjaan" value="{{ $penduduk->pekerjaan}}" required>
+    <input type="text" class="form-control @error('pekerjaan') is-invalid @enderror" name="pekerjaan" value="{{ $penduduk->pekerjaan}}">
     @error('pekerjaan')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
@@ -49,7 +49,7 @@
 </div>
 <div class="form-group">
     <label for="">Status Perkawinan</label>
-    <select name="status_perkawinan" class="form-control @error('status_perkawinan') is-invalid @enderror" required>
+    <select name="status_perkawinan" class="form-control @error('status_perkawinan') is-invalid @enderror">
         <option value="">-- Pilih Status Perkawinan --</option>
         <option value="Belum Kawin" {{ $penduduk->status_perkawinan == 'Belum Kawin' ? 'selected':''}}>Belum Kawin</option>
         <option value="Kawin" {{ $penduduk->status_perkawinan == 'Kawin' ? 'selected':''}}>Kawin</option>
@@ -64,7 +64,7 @@
 </div>
 <div class="form-group">
     <label for="">Status Penduduk</label>
-    <select name="status" class="form-control @error('status') is-invalid @enderror" required>
+    <select name="status" class="form-control @error('status') is-invalid @enderror">
         <option value="">-- Pilih Status --</option>
         <option value="Tinggal Tetap" {{ $penduduk->status == 'Tinggal Tetap' ? 'selected':''}}>Tinggal Tetap</option>
         <option value="Meninggal" {{ $penduduk->status == 'Meninggal' ? 'selected':''}}>Meninggal</option>
@@ -79,5 +79,5 @@
 </div>
 <div class="float-right">
     <a href="{{ route('penduduk.index')}}" class="btn btn-secondary">Kembali</a>
-    <button type="submit" class="btn btn-primary">Simpan</button>
+    <button type="submit" class="btn btn-primary">Update</button>
 </div>

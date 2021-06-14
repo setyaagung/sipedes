@@ -42,6 +42,24 @@ class PendudukController extends Controller
         ];
         $request->validate([
             'nik' => 'required|string|unique:penduduk',
+            'nama' => 'required|string|max:191',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required|string|max:191',
+            'jenis_kelamin' => 'required|string|max:191',
+            'agama' => 'required|string|max:191',
+            'pendidikan' => 'required|string|max:191',
+            'pekerjaan' => 'required|string|max:191',
+            'alamat_ktp' => 'required',
+            'alamat_tinggal' => 'required',
+            'rt' => 'required',
+            'rw' => 'required',
+            'kelurahan' => 'required|string|max:191',
+            'kecamatan' => 'required|string|max:191',
+            'kota' => 'required|string|max:191',
+            'provinsi' => 'required|string|max:191',
+            'negara' => 'required|string|max:191',
+            'status_perkawinan' => 'required|string|max:191',
+            'status' => 'required|string|max:191',
         ], $message);
         Penduduk::create($data);
         return redirect()->route('penduduk.index')->with('create', 'Data penduduk berhasil ditambahkan');
@@ -86,6 +104,24 @@ class PendudukController extends Controller
         ];
         $request->validate([
             'nik' => 'required|string|unique:penduduk,nik,' . $id . ',id_penduduk',
+            'nama' => 'required|string|max:191',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required|string|max:191',
+            'jenis_kelamin' => 'required|string|max:191',
+            'agama' => 'required|string|max:191',
+            'pendidikan' => 'required|string|max:191',
+            'pekerjaan' => 'required|string|max:191',
+            'alamat_ktp' => 'required',
+            'alamat_tinggal' => 'required',
+            'rt' => 'required',
+            'rw' => 'required',
+            'kelurahan' => 'required|string|max:191',
+            'kecamatan' => 'required|string|max:191',
+            'kota' => 'required|string|max:191',
+            'provinsi' => 'required|string|max:191',
+            'negara' => 'required|string|max:191',
+            'status_perkawinan' => 'required|string|max:191',
+            'status' => 'required|string|max:191',
         ], $message);
         $penduduk->update($data);
         return redirect()->route('penduduk.index')->with('update', 'Data penduduk berhasil diperbarui');

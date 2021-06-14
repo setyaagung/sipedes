@@ -47,6 +47,15 @@ class KartuKeluargaController extends Controller
         $request->validate([
             'no_kk' => 'required|string|unique:kartu_keluarga',
             'id_penduduk' => 'required|string|unique:kartu_keluarga',
+            'alamat_kk' => 'required',
+            'rt_kk' => 'required',
+            'rw_kk' => 'required',
+            'kelurahan_kk' => 'required|string|max:191',
+            'kecamatan_kk' => 'required|string|max:191',
+            'kota_kk' => 'required|string|max:191',
+            'provinsi_kk' => 'required|string|max:191',
+            'negara_kk' => 'required|string|max:191',
+            'kode_pos_kk' => 'required',
         ], $message);
         $kk = KartuKeluarga::create($data);
         DetailKartuKeluarga::create([
@@ -99,6 +108,15 @@ class KartuKeluargaController extends Controller
         $request->validate([
             'no_kk' => 'required|string|unique:kartu_keluarga,no_kk,' . $id . ',id_kk',
             'id_penduduk' => 'required|string|unique:kartu_keluarga,id_penduduk,' . $id . ',id_kk',
+            'alamat_kk' => 'required',
+            'rt_kk' => 'required',
+            'rw_kk' => 'required',
+            'kelurahan_kk' => 'required|string|max:191',
+            'kecamatan_kk' => 'required|string|max:191',
+            'kota_kk' => 'required|string|max:191',
+            'provinsi_kk' => 'required|string|max:191',
+            'negara_kk' => 'required|string|max:191',
+            'kode_pos_kk' => 'required',
         ], $message);
         $kartu_keluarga->update($data);
         $detail_kartu_keluarga->update([

@@ -1,6 +1,6 @@
 <div class="form-group">
     <label for="">Nama Bayi</label>
-    <input type="text" class="form-control @error('nama_bayi') is-invalid @enderror" name="nama_bayi" value="{{ $kelahiran->nama_bayi }}" required autofocus>
+    <input type="text" class="form-control @error('nama_bayi') is-invalid @enderror" name="nama_bayi" value="{{ $kelahiran->nama_bayi }}" autofocus>
     @error('nama_bayi')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
@@ -9,7 +9,7 @@
 </div>
 <div class="form-group">
     <label for="">Jenis Kelamin</label>
-    <select name="jenis_kelamin" class="form-control @error('jenis_kelamin') is-invalid @enderror" required>
+    <select name="jenis_kelamin" class="form-control @error('jenis_kelamin') is-invalid @enderror">
         <option value="">-- Pilih Jenis Kelamin --</option>
         <option value="laki" {{ $kelahiran->jenis_kelamin == 'laki' ? 'selected':''}}>Laki - Laki</option>
         <option value="perempuan" {{ $kelahiran->jenis_kelamin == 'perempuan' ? 'selected':''}}>Perempuan</option>
@@ -22,7 +22,7 @@
 </div>
 <div class="form-group">
     <label for="">Tempat Dilahirkan</label>
-    <select name="tempat_dilahirkan" class="form-control @error('tempat_dilahirkan') is-invalid @enderror" required>
+    <select name="tempat_dilahirkan" class="form-control @error('tempat_dilahirkan') is-invalid @enderror">
         <option value="">-- Pilih Tempat Dilahirkan --</option>
         <option value="RS/RB" {{ $kelahiran->tempat_dilahirkan == 'RS/RB' ? 'selected':''}}>RS/RB</option>
         <option value="Puskesmas" {{$kelahiran->tempat_dilahirkan == 'Puskesmas' ? 'selected':''}}>Puskesmas</option>
@@ -38,7 +38,7 @@
 </div>
 <div class="form-group">
     <label for="">Tempat Lahir</label>
-    <input type="text" class="form-control @error('tempat_lahir') is-invalid @enderror" name="tempat_lahir" value="{{ $kelahiran->tempat_lahir }}" required>
+    <input type="text" class="form-control @error('tempat_lahir') is-invalid @enderror" name="tempat_lahir" value="{{ $kelahiran->tempat_lahir }}">
     @error('tempat_lahir')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
@@ -47,7 +47,7 @@
 </div>
 <div class="form-group">
     <label for="">Tanggal Lahir</label>
-    <input type="date" class="form-control @error('tanggal_lahir') is-invalid @enderror" name="tanggal_lahir" value="{{ \Carbon\Carbon::parse($kelahiran->tanggal_lahir)->format('Y-m-d')}}" required>
+    <input type="date" class="form-control @error('tanggal_lahir') is-invalid @enderror" name="tanggal_lahir" value="{{ \Carbon\Carbon::parse($kelahiran->tanggal_lahir)->format('Y-m-d')}}">
     @error('tanggal_lahir')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
@@ -56,7 +56,7 @@
 </div>
 <div class="form-group">
     <label for="">Waktu Lahir</label>
-    <input type="time" class="form-control @error('waktu_lahir') is-invalid @enderror" name="waktu_lahir" value="{{ \Carbon\Carbon::parse($kelahiran->waktu_lahir)->format('H:i')}}" required>
+    <input type="time" class="form-control @error('waktu_lahir') is-invalid @enderror" name="waktu_lahir" value="{{ \Carbon\Carbon::parse($kelahiran->waktu_lahir)->format('H:i')}}">
     @error('waktu_lahir')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
@@ -65,7 +65,7 @@
 </div>
 <div class="form-group">
     <label for="">Jenis Kelahiran</label>
-    <select name="jenis_lahir" class="form-control @error('jenis_lahir') is-invalid @enderror" required>
+    <select name="jenis_lahir" class="form-control @error('jenis_lahir') is-invalid @enderror">
         <option value="">-- Pilih Jenis Kelahiran --</option>
         <option value="Tunggal" {{ $kelahiran->jenis_lahir == 'Tunggal' ? 'selected':''}}>Tunggal</option>
         <option value="Kembar 2" {{ $kelahiran->jenis_lahir == 'Kembar 2' ? 'selected':''}}>Kembar 2</option>
@@ -81,7 +81,7 @@
 </div>
 <div class="form-group">
     <label for="">Kelahiran Ke</label>
-    <input type="number" class="form-control @error('kelahiran') is-invalid @enderror" name="kelahiran" value="{{ $kelahiran->kelahiran }}" required>
+    <input type="number" class="form-control @error('kelahiran') is-invalid @enderror" name="kelahiran" value="{{ $kelahiran->kelahiran }}">
     @error('kelahiran')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
@@ -90,7 +90,7 @@
 </div>
 <div class="form-group">
     <label for="">Penolong</label>
-    <select name="penolong" class="form-control @error('penolong') is-invalid @enderror" required>
+    <select name="penolong" class="form-control @error('penolong') is-invalid @enderror">
         <option value="">-- Pilih Penolong --</option>
         <option value="Dokter" {{ $kelahiran->penolong == 'Dokter' ? 'selected':''}}>Dokter</option>
         <option value="Bidan/Perawat" {{ $kelahiran->penolong == 'Bidan/Perawat' ? 'selected':''}}>Bidan/Perawat</option>
@@ -105,7 +105,7 @@
 </div>
 <div class="form-group">
     <label for="">Berat Bayi (kg)</label>
-    <input type="number" class="form-control @error('berat_bayi') is-invalid @enderror" name="berat_bayi" value="{{ $kelahiran->berat_bayi }}" step="0.01" required>
+    <input type="number" class="form-control @error('berat_bayi') is-invalid @enderror" name="berat_bayi" value="{{ $kelahiran->berat_bayi }}" step="0.01">
     @error('berat_bayi')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
@@ -114,7 +114,7 @@
 </div>
 <div class="form-group">
     <label for="">Panjang Bayi (cm)</label>
-    <input type="number" class="form-control @error('panjang_bayi') is-invalid @enderror" name="panjang_bayi" value="{{ $kelahiran->panjang_bayi }}" required>
+    <input type="number" class="form-control @error('panjang_bayi') is-invalid @enderror" name="panjang_bayi" value="{{ $kelahiran->panjang_bayi }}">
     @error('panjang_bayi')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>

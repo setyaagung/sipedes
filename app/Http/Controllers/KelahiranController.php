@@ -42,6 +42,28 @@ class KelahiranController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'id_kk' => 'required',
+            'nama_bayi' => 'required|string|max:191',
+            'jenis_kelamin' => 'required|string|max:191',
+            'berat_bayi' => 'required',
+            'panjang_bayi' => 'required',
+            'tempat_dilahirkan'  => 'required|string|max:191',
+            'tempat_lahir' => 'required|string|max:191',
+            'tanggal_lahir' => 'required',
+            'waktu_lahir' => 'required',
+            'kelahiran'  => 'required',
+            'jenis_lahir' => 'required|string|max:191',
+            'penolong' => 'required|string|max:191',
+            'id_ayah' => 'required',
+            'id_ibu' => 'required',
+            'nik_pelapor' => 'required',
+            'nama_pelapor' => 'required|string|max:191',
+            'umur_pelapor' => 'required',
+            'jk_pelapor' => 'required|string|max:191',
+            'pekerjaan_pelapor' => 'required|string|max:191',
+            'alamat_pelapor' => 'required|string|max:191',
+        ]);
         $penduduk = Penduduk::create([
             'nik' => \rand(1000000000000000, 9999999999999999),
             'agama' => 'lainnya',
@@ -115,6 +137,28 @@ class KelahiranController extends Controller
         $penduduk = Penduduk::where('id_penduduk', $kelahiran->id_penduduk)->get()->first();
         $detail_kk = DetailKartuKeluarga::where('id_kk', $kelahiran->id_kk)->where('id_penduduk', $penduduk->id_penduduk)->get()->first();
 
+        $request->validate([
+            'id_kk' => 'required',
+            'nama_bayi' => 'required|string|max:191',
+            'jenis_kelamin' => 'required|string|max:191',
+            'berat_bayi' => 'required',
+            'panjang_bayi' => 'required',
+            'tempat_dilahirkan'  => 'required|string|max:191',
+            'tempat_lahir' => 'required|string|max:191',
+            'tanggal_lahir' => 'required',
+            'waktu_lahir' => 'required',
+            'kelahiran'  => 'required',
+            'jenis_lahir' => 'required|string|max:191',
+            'penolong' => 'required|string|max:191',
+            'id_ayah' => 'required',
+            'id_ibu' => 'required',
+            'nik_pelapor' => 'required',
+            'nama_pelapor' => 'required|string|max:191',
+            'umur_pelapor' => 'required',
+            'jk_pelapor' => 'required|string|max:191',
+            'pekerjaan_pelapor' => 'required|string|max:191',
+            'alamat_pelapor' => 'required|string|max:191',
+        ]);
         $data = $request->all();
         $kelahiran->update($data);
         $penduduk->update([
