@@ -37,9 +37,6 @@ class CreateKelahiranTable extends Migration
             $table->string('pekerjaan_pelapor');
             $table->string('alamat_pelapor');
             $table->timestamps();
-
-            $table->foreign('id_kk')->references('id_kk')->on('detail_kartu_keluarga')->onDelete('cascade');
-            $table->foreign('id_penduduk')->references('id_penduduk')->on('penduduk')->onDelete('cascade');
         });
     }
 
