@@ -17,7 +17,7 @@
     <select id="id_ayah" name="id_ayah" class="form-control @error('id_ayah') is-invalid @enderror ayah" style="width: 100%;">
         <option value=""></option>
         @foreach ($penduduks as $penduduk)
-            <option value="{{ $penduduk->id_penduduk}}" {{ old('id_ayah') == $penduduk->id_penduduk ? 'selected':''}}>{{strtoupper($penduduk->nama)}}</option>
+            <option value="{{ $penduduk->id_penduduk}}" {{ old('id_ayah') == $penduduk->id_penduduk ? 'selected':''}}>{{ $penduduk->nik}} - {{strtoupper($penduduk->nama)}}</option>
         @endforeach
     </select>
     @error('id_ayah')
@@ -25,6 +25,16 @@
             <strong>{{ $message }}</strong>
         </span>
     @enderror
+</div>
+
+<div class="form-group">
+    <label for="">Tanggal Lahir</label>
+    <input type="text" name="tanggal_lahir_ayah" class="form-control" readonly>
+</div>
+
+<div class="form-group">
+    <label for="">Pekerjaan</label>
+    <input type="text" name="pekerjaan_ayah" class="form-control" readonly>
 </div>
 
 <div class="form-group">

@@ -51,7 +51,3 @@
     <label for="">Provinsi</label>
     <input type="text" class="form-control" name="provinsi_ibu" readonly>
 </div>
-<div class="form-group">
-    <label for="">Kewarganegaraan</label>
-    <input type="text" class="form-control" name="negara_ibu" readonly>
-</div>

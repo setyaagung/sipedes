@@ -3,7 +3,7 @@
     <select id="id_kk" name="id_kk" class="form-control @error('id_kk') is-invalid @enderror kk" style="width: 100%;">
         <option value=""></option>
         @foreach ($kartu_keluargas as $kartu_keluarga)
-            <option value="{{ $kartu_keluarga->id_kk}}" {{ $kelahiran->id_kk == $kartu_keluarga->id_kk ? 'selected':''}}>{{ $kartu_keluarga->no_kk}} - {{strtoupper($kartu_keluarga->penduduk->nama)}}</option>
+            <option value="{{ $kartu_keluarga->id_kk}}" {{ $kematian->id_kk == $kartu_keluarga->id_kk ? 'selected':''}}>{{ $kartu_keluarga->no_kk}} - {{strtoupper($kartu_keluarga->penduduk->nama)}}</option>
         @endforeach
     </select>
     @error('id_kk')
@@ -17,7 +17,7 @@
     <select id="id_ayah" name="id_ayah" class="form-control @error('id_ayah') is-invalid @enderror ayah" style="width: 100%;">
         <option value=""></option>
         @foreach ($penduduks as $penduduk)
-            <option value="{{ $penduduk->id_penduduk}}" {{ $kelahiran->id_ayah == $penduduk->id_penduduk ? 'selected':''}}>{{ $penduduk->nik}} - {{strtoupper($penduduk->nama)}}</option>
+            <option value="{{ $penduduk->id_penduduk}}" {{ $kematian->id_ayah == $penduduk->id_penduduk ? 'selected':''}}>{{ $penduduk->nik}} - {{strtoupper($penduduk->nama)}}</option>
         @endforeach
     </select>
     @error('id_ayah')
@@ -64,8 +64,4 @@
 <div class="form-group">
     <label for="">Provinsi</label>
     <input type="text" class="form-control" name="provinsi_ayah" value="{{ $ayah->provinsi}}" readonly>
-</div>
-<div class="form-group">
-    <label for="">Kewarganegaraan</label>
-    <input type="text" class="form-control" name="negara_ayah" value="{{ strtoupper($ayah->negara)}}" readonly>
 </div>

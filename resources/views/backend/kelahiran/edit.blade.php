@@ -78,6 +78,8 @@
                 data:{'id':id_ayah},
                 success: function(data){
                     $.each(data, function(key, value){
+                        $('input[name="tanggal_lahir_ayah"]').val(data.tanggal_lahir);
+                        $('input[name="pekerjaan_ayah"]').val(data.pekerjaan);
                         $('textarea[name="alamat_ayah"]').val(data.alamat_ktp);
                         $('input[name="rt_ayah"]').val(data.rt);
                         $('input[name="rw_ayah"]').val(data.rw);
@@ -101,6 +103,8 @@
                 data:{'id':id_ibu},
                 success: function(data){
                     $.each(data, function(key, value){
+                        $('input[name="tanggal_lahir_ibu"]').val(data.tanggal_lahir);
+                        $('input[name="pekerjaan_ibu"]').val(data.pekerjaan);
                         $('textarea[name="alamat_ibu"]').val(data.alamat_ktp);
                         $('input[name="rt_ibu"]').val(data.rt);
                         $('input[name="rw_ibu"]').val(data.rw);
