@@ -31,6 +31,8 @@ class CreateKematianTable extends Migration
             $table->string('pekerjaan_pelapor');
             $table->string('alamat_pelapor');
             $table->timestamps();
+
+            $table->foreign('id_penduduk')->references('id_penduduk')->on('penduduk')->onDelete('cascade');
         });
     }
 
