@@ -15,6 +15,7 @@ class AddStatusPerkawinanToPendudukTable extends Migration
     {
         Schema::table('penduduk', function (Blueprint $table) {
             $table->string('status_perkawinan')->after('negara');
+            $table->dropColumn('status');
         });
     }
 

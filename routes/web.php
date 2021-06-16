@@ -32,11 +32,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/kelahiran/getayah', 'KelahiranController@getAyah');
     Route::get('/kelahiran/getibu', 'KelahiranController@getIbu');
     Route::resource('kelahiran', 'KelahiranController');
-    //kelahiran
+    //kematian
     Route::get('/kematian/getpenduduk', 'KematianController@getPenduduk');
     Route::get('/kematian/getayah', 'KematianController@getAyah');
     Route::get('/kematian/getibu', 'KematianController@getIbu');
     Route::resource('kematian', 'KematianController');
+    //pindah datang
+    Route::resource('pindah-datang', 'PindahDatangController');
     //user
     Route::resource('user', 'UserController');
     Route::get('/update-status/{id}', 'UserController@update_status');

@@ -59,7 +59,6 @@ class PendudukController extends Controller
             'provinsi' => 'required|string|max:191',
             'negara' => 'required|string|max:191',
             'status_perkawinan' => 'required|string|max:191',
-            'status' => 'required|string|max:191',
         ], $message);
         Penduduk::create($data);
         return redirect()->route('penduduk.index')->with('create', 'Data penduduk berhasil ditambahkan');
@@ -121,7 +120,6 @@ class PendudukController extends Controller
             'provinsi' => 'required|string|max:191',
             'negara' => 'required|string|max:191',
             'status_perkawinan' => 'required|string|max:191',
-            'status' => 'required|string|max:191',
         ], $message);
         $penduduk->update($data);
         return redirect()->route('penduduk.index')->with('update', 'Data penduduk berhasil diperbarui');

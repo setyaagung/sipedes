@@ -62,21 +62,6 @@
         </span>
     @enderror
 </div>
-<div class="form-group">
-    <label for="">Status Penduduk</label>
-    <select name="status" class="form-control @error('status') is-invalid @enderror">
-        <option value="">-- Pilih Status --</option>
-        <option value="Tinggal Tetap" {{ $penduduk->status == 'Tinggal Tetap' ? 'selected':''}}>Tinggal Tetap</option>
-        <option value="Meninggal" {{ $penduduk->status == 'Meninggal' ? 'selected':''}}>Meninggal</option>
-        <option value="Pindah Datang" {{ $penduduk->status == 'Pindah Datang' ? 'selected':''}}>Pindah Datang</option>
-        <option value="Pindah Keluar" {{ $penduduk->status == 'Pindah Keluar' ? 'selected':''}}>Pindah Keluar</option>
-    </select>
-    @error('status')
-        <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-    @enderror
-</div>
 <div class="float-right">
     <a href="{{ route('penduduk.index')}}" class="btn btn-secondary">Kembali</a>
     <button type="submit" class="btn btn-primary">Update</button>
