@@ -17,4 +17,9 @@ class PindahDatang extends Model
         'rt_tujuan', 'rw_tujuan', 'kelurahan_tujuan', 'kecamatan_tujuan',
         'kota_tujuan', 'provinsi_tujuan',
     ];
+
+    public function pindahDatangDetails()
+    {
+        return $this->hasMany(DetailPindahDatang::class, 'id_pindah_datang');
+    }
 }

@@ -25,7 +25,6 @@
                 <td>
                     <select name="shdk[]" class="form-control" required>
                         <option value="">-- Pilih SHDK --</option>
-                        <option value="">-- Pilih SHDK --</option>
                         <option value="Suami">Suami</option>
                         <option value="Istri">Istri</option>
                         <option value="Anak">Anak</option>
