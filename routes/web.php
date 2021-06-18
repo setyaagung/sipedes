@@ -39,6 +39,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('kematian', 'KematianController');
     //pindah datang
     Route::resource('pindah-datang', 'PindahDatangController');
+    //pindah pergi
+    Route::get('/pindah-pergi/getkk', 'PindahPergiController@getKK');
+    Route::resource('pindah-pergi', 'PindahPergiController');
     //user
     Route::resource('user', 'UserController');
     Route::get('/update-status/{id}', 'UserController@update_status');

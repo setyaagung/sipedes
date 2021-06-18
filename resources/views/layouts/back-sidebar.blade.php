@@ -58,7 +58,7 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item {{ (request()->segment(1) == 'pindah-datang') ? 'active' : '' }}">
+    <li class="nav-item {{ (request()->segment(1) == 'pindah-datang') ? 'active' : '' }} {{ (request()->segment(1) == 'pindah-pergi') ? 'active' : '' }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
             aria-expanded="true" aria-controls="collapseThree">
             <i class="fas fa-fw fa-archive"></i>
@@ -67,6 +67,7 @@
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item {{ (request()->segment(1) == 'pindah-datang') ? 'active' : '' }}" href="{{ route('pindah-datang.index')}}">Pindah Datang</a>
+                <a class="collapse-item {{ (request()->segment(1) == 'pindah-pergi') ? 'active' : '' }}" href="{{ route('pindah-pergi.index')}}">Pindah Pergi</a>
             </div>
         </div>
     </li>
