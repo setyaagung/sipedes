@@ -93,7 +93,11 @@ class PindahPergiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pindah_pergi = PindahPergi::findOrFail($id);
+        $kartu_keluargas = KartuKeluarga::orderBy('no_kk', 'ASC')->get();
+        $penduduks = Penduduk::orderBy('nama', 'ASC')->get();
+        $countDetail = DetailPindahPergi::where('id_pindah_pergi', $pindah_pergi->id_pindah_pergi)->count();
+        return view('backend.pindah-pergi.edit', compact('pindah_pergi', 'kartu_keluargas', 'penduduks', 'countDetail'));
     }
 
     /**
@@ -105,7 +109,36 @@ class PindahPergiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pindah_pergi = PindahPergi::findOrFail($id);
+        $request->validate([
+            'id_kk' => 'required',
+            'kode_pos_asal' => 'required',
+            'telepon_asal' => 'required',
+            'nik_pemohon' => 'required',
+            'nama_pemohon' => 'required|string|max:191',
+            'alasan_pindah' => 'required',
+            'alamat_tujuan' => 'required',
+            'rt_tujuan' => 'required',
+            'rw_tujuan' => 'required',
+            'kelurahan_tujuan' => 'required|string|max:191',
+            'kecamatan_tujuan' => 'required|string|max:191',
+            'kota_tujuan' => 'required|string|max:191',
+            'provinsi_tujuan' => 'required|string|max:191',
+            'kode_pos_tujuan' => 'required',
+            'telepon_tujuan' => 'required',
+            'jenis_kepindahan' => 'required',
+            'status_no_kk_tidak_pindah' => 'required',
+            'status_no_kk_pindah' => 'required',
+        ]);
+        //$data = $request->all();
+        foreach (request()->id_penduduk as $key => $value) {
+            $data['id_penduduk'] = request()->id_penduduk[$key];
+            $data['masa_berlaku_ktp'] = request()->masa_berlaku_ktp[$key];
+            $data['shdk'] = request()->shdk[$key];
+            DetailPindahPergi::where('id_detail_pindah_pergi', $request->id_detail_pindah_pergi[$key])->update($data);
+            $pindah_pergi->update($request->all());
+        }
+        return redirect()->route('pindah-pergi.index')->with('update', 'Data mutasi pindah pergi berhasil diperbarui');
     }
 
     /**

@@ -28,6 +28,11 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('penduduk', 'PendudukController');
     //kartu keluarga
     Route::resource('kartu-keluarga', 'KartuKeluargaController');
+    Route::get('/kartu-keluarga/{id_kk}/create_anggota', 'KartuKeluargaController@create_anggota')->name('create_anggota');
+    Route::post('/kartu-keluarga/{id_kk}/anggota/store_anggota', 'KartuKeluargaController@store_anggota')->name('store_anggota');
+    Route::get('/kartu-keluarga/{id_kk}/anggota/{id_detail_kk}/edit_anggota', 'KartuKeluargaController@edit_anggota')->name('edit_anggota');
+    Route::patch('/kartu-keluarga/{id_kk}/anggota/{id_detail_kk}', 'KartuKeluargaController@update_anggota')->name('update_anggota');
+    Route::delete('/kartu-keluarga/{id_kk}/anggota/{id_detail_kk}', 'KartuKeluargaController@destroy_anggota')->name('destroy_anggota');
     //kelahiran
     Route::get('/kelahiran/getayah', 'KelahiranController@getAyah');
     Route::get('/kelahiran/getibu', 'KelahiranController@getIbu');

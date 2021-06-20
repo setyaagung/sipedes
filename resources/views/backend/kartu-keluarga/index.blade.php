@@ -57,6 +57,7 @@
                                             <td>{{ strtoupper($kartu_keluarga->penduduk->nama)}}</td>
                                             <td>{{ $kartu_keluarga->alamat_kk}}</td>
                                             <td>
+                                                <a href="{{ route('kartu-keluarga.show',$kartu_keluarga->id_kk)}}" class="btn btn-info btn-sm"><i class="fas fa-book"></i> Detail</a>
                                                 <a href="{{ route('kartu-keluarga.edit',$kartu_keluarga->id_kk)}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
                                                 <form action="{{ route('kartu-keluarga.destroy', $kartu_keluarga->id_kk)}}" method="POST" class="d-inline">
                                                     @csrf

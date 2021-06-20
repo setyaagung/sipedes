@@ -12,4 +12,9 @@ class DetailKartuKeluarga extends Model
         'id_kk',
         'id_penduduk', 'status'
     ];
+
+    public function penduduk()
+    {
+        return $this->belongsTo(Penduduk::class, 'id_penduduk');
+    }
 }

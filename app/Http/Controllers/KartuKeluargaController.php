@@ -45,8 +45,8 @@ class KartuKeluargaController extends Controller
             'id_penduduk.unique' => 'Kepala Keluarga yang diinputkan sudah sebagai kepala keluarga di KK lain'
         ];
         $request->validate([
-            'no_kk' => 'required|string|unique:kartu_keluarga',
-            'id_penduduk' => 'required|string|unique:kartu_keluarga',
+            'no_kk' => 'required|unique:kartu_keluarga',
+            'id_penduduk' => 'required|unique:kartu_keluarga',
             'alamat_kk' => 'required',
             'rt_kk' => 'required',
             'rw_kk' => 'required',
@@ -74,6 +74,9 @@ class KartuKeluargaController extends Controller
      */
     public function show($id)
     {
+        $kartu_keluarga = KartuKeluarga::findOrFail($id);
+        //$penduduks = Penduduk::orderBy('nama', 'ASC')->get();
+        return view('backend.kartu-keluarga.show', compact('kartu_keluarga'));
     }
 
     /**
@@ -106,8 +109,8 @@ class KartuKeluargaController extends Controller
             'id_penduduk.unique' => 'Kepala Keluarga yang diinputkan sudah sebagai kepala keluarga di KK lain'
         ];
         $request->validate([
-            'no_kk' => 'required|string|unique:kartu_keluarga,no_kk,' . $id . ',id_kk',
-            'id_penduduk' => 'required|string|unique:kartu_keluarga,id_penduduk,' . $id . ',id_kk',
+            'no_kk' => 'required|unique:kartu_keluarga,no_kk,' . $id . ',id_kk',
+            'id_penduduk' => 'required|unique:kartu_keluarga,id_penduduk,' . $id . ',id_kk',
             'alamat_kk' => 'required',
             'rt_kk' => 'required',
             'rw_kk' => 'required',
@@ -137,5 +140,61 @@ class KartuKeluargaController extends Controller
         $kartu_keluarga = KartuKeluarga::findOrFail($id);
         $kartu_keluarga->delete();
         return redirect()->route('kartu-keluarga.index')->with('delete', 'Data kartu keluarga berhasil dihapus');
+    }
+
+    public function create_anggota($id)
+    {
+        $kartu_keluarga = KartuKeluarga::where('id_kk', $id)->first();
+        $penduduks = Penduduk::orderBy('nama', 'ASC')->get();
+        return view('backend.kartu-keluarga.create_anggota', compact('kartu_keluarga', 'penduduks'));
+    }
+
+    public function store_anggota(Request $request, $id)
+    {
+        $kartu_keluarga = KartuKeluarga::where('id_kk', $id)->first();
+        $data = $request->all();
+        $message = [
+            'id_penduduk.unique' => 'Anggota keluarga yang diinputkan sudah berada di KK lain'
+        ];
+        $request->validate([
+            'id_penduduk' => 'required|unique:detail_kartu_keluarga',
+            'status' => 'required',
+        ], $message);
+        DetailKartuKeluarga::create($data);
+        return redirect()->route('kartu-keluarga.show', $kartu_keluarga->id_kk)->with('create', 'Data anggota keluarga berhasil ditambahkan');
+    }
+
+    public function edit_anggota($id_kk, $id)
+    {
+        $kartu_keluarga = KartuKeluarga::where('id_kk', $id_kk)->first();
+        $penduduks = Penduduk::orderBy('nama', 'ASC')->get();
+        $detail = DetailKartuKeluarga::findOrFail($id);
+        return view('backend.kartu-keluarga.edit_anggota', compact('kartu_keluarga', 'penduduks', 'detail'));
+    }
+
+    public function update_anggota(Request $request, $id_kk, $id)
+    {
+        $kartu_keluarga = KartuKeluarga::where('id_kk', $id_kk)->first();
+        $detail = DetailKartuKeluarga::findOrFail($id);
+
+        $data = $request->all();
+        $message = [
+            'id_penduduk.unique' => 'Anggota keluarga yang diinputkan sudah berada di KK lain'
+        ];
+        $request->validate([
+            'id_penduduk' => 'required|unique:detail_kartu_keluarga,id_penduduk,' . $id . ',id_detail_kk',
+            'status' => 'required',
+        ], $message);
+
+        $detail->update($data);
+        return redirect()->route('kartu-keluarga.show', $kartu_keluarga->id_kk)->with('update', 'Data anggota keluarga berhasil diperbarui');
+    }
+
+    public function destroy_anggota($id_kk, $id)
+    {
+        $kartu_keluarga = KartuKeluarga::where('id_kk', $id_kk)->first();
+        $detail = DetailKartuKeluarga::findOrFail($id);
+        $detail->delete();
+        return redirect()->back()->with('delete', 'Data anggota keluarga berhasil dihapus');
     }
 }

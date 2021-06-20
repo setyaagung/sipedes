@@ -27,9 +27,9 @@
         <tbody id="oke" class="body_keluarga">
             @foreach ($pindah_datang->pindahDatangDetails as $detail)
             <tr>
-                <td>
-                    <input type="number" class="form-control" name="nik[]" value="{{ $detail->nik}}" required>
-                    <input type="hidden" name="id_detail_pindah_datang[]" value="{{ $detail->id_detail_pindah_datang }}">
+                    <td>
+                        <input type="number" class="form-control" name="nik[]" value="{{ $detail->nik}}" required>
+                        <input type="hidden" name="id_detail_pindah_datang[]" value="{{ $detail->id_detail_pindah_datang }}">
                     </td>
                     <td>
                         <input type="text" class="form-control" name="nama[]" value="{{ $detail->nama}}" required>

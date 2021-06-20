@@ -17,4 +17,9 @@ class KartuKeluarga extends Model
     {
         return $this->belongsTo(Penduduk::class, 'id_penduduk');
     }
+
+    public function kartuKeluargaDetail()
+    {
+        return $this->hasMany(DetailKartuKeluarga::class, 'id_kk');
+    }
 }
