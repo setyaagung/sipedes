@@ -15,8 +15,22 @@ class Kematian extends Model
         'jk_pelapor', 'pekerjaan_pelapor', 'alamat_pelapor'
     ];
 
+    public function kk()
+    {
+        return $this->belongsTo(KartuKeluarga::class, 'id_kk');
+    }
+
     public function penduduk()
     {
         return $this->belongsTo(Penduduk::class, 'id_penduduk');
+    }
+
+    public function ayah()
+    {
+        return $this->belongsTo(Penduduk::class, 'id_ayah', 'id_penduduk');
+    }
+    public function ibu()
+    {
+        return $this->belongsTo(Penduduk::class, 'id_ibu', 'id_penduduk');
     }
 }

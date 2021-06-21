@@ -43,6 +43,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/kematian/getpenduduk', 'KematianController@getPenduduk');
     Route::get('/kematian/getayah', 'KematianController@getAyah');
     Route::get('/kematian/getibu', 'KematianController@getIbu');
+    Route::get('/kematian/{kematian}/print_kematian', 'KematianController@print_kematian')->name('kematian.print_kematian');
     Route::resource('kematian', 'KematianController');
     //pindah datang
     Route::resource('pindah-datang', 'PindahDatangController');

@@ -6,6 +6,7 @@ use App\Model\KartuKeluarga;
 use App\Model\Kematian;
 use App\Model\Penduduk;
 use Illuminate\Http\Request;
+use PDF;
 
 class KematianController extends Controller
 {
@@ -158,5 +159,19 @@ class KematianController extends Controller
     {
         $detailIbu = Penduduk::where('id_penduduk', $request->id)->first();
         return \response()->json($detailIbu);
+    }
+
+    public function print_kematian($id)
+    {
+        $kematian = Kematian::findOrFail($id);
+        $kartu_keluargas = KartuKeluarga::orderBy('no_kk', 'ASC')->get();
+        $jenazah = Penduduk::where('id_penduduk', $kematian->id_penduduk)->get()->first();
+        $ayah = Penduduk::where('id_penduduk', $kematian->id_ayah)->get()->first();
+        $ibu = Penduduk::where('id_penduduk', $kematian->id_ibu)->get()->first();
+        $pendudukAll = Penduduk::orderBy('nama')->get();
+        $penduduks = Penduduk::orderBy('nama')->where('jenis_kelamin', 'laki')->get();
+        $pendudukp = Penduduk::orderBy('nama')->where('jenis_kelamin', 'perempuan')->get();
+        $pdf = PDF::loadView('backend.kematian.print_kematian', compact('kematian', 'jenazah', 'ayah', 'ibu', 'kartu_keluargas', 'pendudukAll', 'penduduks', 'pendudukp'));
+        return $pdf->stream();
     }
 }

@@ -45,7 +45,6 @@
                                         <th>NO</th>
                                         <th>NIK</th>
                                         <th>NAMA</th>
-                                        <th>JENIS KELAMIN</th>
                                         <th>TANGGAL MENINGGAL</th>
                                         <th>SEBAB</th>
                                         <th>AKSI</>
@@ -57,16 +56,10 @@
                                             <td>{{ $loop->iteration}}</td>
                                             <td>{{ $kematian->penduduk->nik}}</td>
                                             <td>{{ $kematian->penduduk->nama}}</td>
-                                            <td>
-                                                @if ($kematian->penduduk->jenis_kelamin == 'laki')
-                                                    Laki - Laki
-                                                @else
-                                                    Perempuan
-                                                @endif
-                                            </td>
                                             <td>{{ \Carbon\Carbon::parse($kematian->tanggal_kematian)->isoFormat('D MMMM Y')}}</td>
                                             <td>{{ $kematian->sebab_kematian}}</td>
                                             <td>
+                                                <a href="{{ route('kematian.print_kematian',$kematian->id_kematian)}}" class="btn btn-success btn-sm" target="_blank"><i class="fas fa-file"></i> Cetak</a>
                                                 <a href="{{ route('kematian.edit',$kematian->id_kematian)}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
                                                 <form action="{{ route('kematian.destroy', $kematian->id_kematian)}}" method="POST" class="d-inline">
                                                     @csrf
