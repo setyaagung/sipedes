@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Penduduk;
 use Illuminate\Http\Request;
+use PDF;
 
 class PendudukController extends Controller
 {
@@ -136,5 +137,12 @@ class PendudukController extends Controller
         $penduduk = Penduduk::findOrFail($id);
         $penduduk->delete();
         return redirect()->route('penduduk.index')->with('delete', 'Data penduduk berhasil dihapus');
+    }
+
+    public function print_all()
+    {
+        $penduduks = Penduduk::orderBy('nik', 'ASC')->get();
+        $pdf = PDF::loadView('backend.penduduk.print_all', compact('penduduks'));
+        return $pdf->stream();
     }
 }

@@ -14,4 +14,18 @@ class Kelahiran extends Model
         'id_ayah', 'id_ibu', 'nik_pelapor', 'nama_pelapor', 'umur_pelapor',
         'jk_pelapor', 'pekerjaan_pelapor', 'alamat_pelapor',
     ];
+
+    public function kk()
+    {
+        return $this->belongsTo(KartuKeluarga::class, 'id_kk');
+    }
+
+    public function ibu()
+    {
+        return $this->belongsTo(Penduduk::class, 'id_ibu', 'id_penduduk');
+    }
+    public function ayah()
+    {
+        return $this->belongsTo(Penduduk::class, 'id_ayah', 'id_penduduk');
+    }
 }

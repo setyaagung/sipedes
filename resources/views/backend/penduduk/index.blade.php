@@ -10,6 +10,7 @@
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-primary">Kelola Data Penduduk</h6>
                         <div class="float-right">
+                            <a href="{{ route('penduduk.print_all')}}" class="btn btn-sm btn-danger" target="_blank"><i class="fas fa-file-pdf"></i> Print</a>
                             <a href="{{ route('penduduk.create')}}" class="btn btn-sm btn-primary">Tambah</a>
                         </div>
                     </div>

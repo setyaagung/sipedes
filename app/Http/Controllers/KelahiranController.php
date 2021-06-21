@@ -7,6 +7,7 @@ use App\Model\KartuKeluarga;
 use App\Model\Kelahiran;
 use App\Model\Penduduk;
 use Illuminate\Http\Request;
+use PDF;
 
 class KelahiranController extends Controller
 {
@@ -208,5 +209,16 @@ class KelahiranController extends Controller
     {
         $detailIbu = Penduduk::where('id_penduduk', $request->id)->first();
         return \response()->json($detailIbu);
+    }
+    public function print_kelahiran($id)
+    {
+        $kelahiran = Kelahiran::findOrFail($id);
+        $kartu_keluargas = KartuKeluarga::orderBy('no_kk', 'ASC')->get();
+        $ayah = Penduduk::where('id_penduduk', $kelahiran->id_ayah)->get()->first();
+        $ibu = Penduduk::where('id_penduduk', $kelahiran->id_ibu)->get()->first();
+        $penduduks = Penduduk::orderBy('nama')->where('jenis_kelamin', 'laki')->where('id_penduduk', '!=', $kelahiran->id_penduduk)->get();
+        $pendudukp = Penduduk::orderBy('nama')->where('jenis_kelamin', 'perempuan')->where('id_penduduk', '!=', $kelahiran->id_penduduk)->get();
+        $pdf = PDF::loadView('backend.kelahiran.print_kelahiran', compact('kelahiran', 'ayah', 'ibu', 'kartu_keluargas', 'penduduks', 'pendudukp'));
+        return $pdf->stream();
     }
 }

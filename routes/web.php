@@ -25,6 +25,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
     //penduduk
+    Route::get('/penduduk/print_all', 'PendudukController@print_all')->name('penduduk.print_all');
     Route::resource('penduduk', 'PendudukController');
     //kartu keluarga
     Route::resource('kartu-keluarga', 'KartuKeluargaController');
@@ -36,6 +37,7 @@ Route::middleware(['auth'])->group(function () {
     //kelahiran
     Route::get('/kelahiran/getayah', 'KelahiranController@getAyah');
     Route::get('/kelahiran/getibu', 'KelahiranController@getIbu');
+    Route::get('/kelahiran/{kelahiran}/print_kelahiran', 'KelahiranController@print_kelahiran')->name('kelahiran.print_kelahiran');
     Route::resource('kelahiran', 'KelahiranController');
     //kematian
     Route::get('/kematian/getpenduduk', 'KematianController@getPenduduk');
