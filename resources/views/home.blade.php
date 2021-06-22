@@ -1,22 +1,17 @@
 @extends('layouts.app')
 
+@section('title','SIPEDES PEDURUNGAN KIDUL')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
+        <div class="col-12 text-center">
+            <h1 class="font-weight-bold" style="font-size: 48px;margin-top: 100px">
+                SISTEM INFORMASI DESA<br>
+                PEDURUNGAN KIDUL
+            </h1>
+            <p class="mt-1">Jl. Pedurungan Kidul No.7, Pedurungan Kidul, Pedurungan, Kota Semarang, Jawa Tengah 50192</p>
+            <a href="{{ route('dashboard')}}" class="btn btn-primary">Dashboard</a>
         </div>
     </div>
 </div>
