@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-12 text-center">
+        <div class="col-md-12 text-center">
             <h1 class="font-weight-bold" style="font-size: 48px;margin-top: 100px">
                 SISTEM INFORMASI DESA<br>
                 PEDURUNGAN KIDUL
