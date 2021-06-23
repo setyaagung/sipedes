@@ -14,4 +14,9 @@ class DetailPindahPergi extends Model
         'masa_berlaku_ktp',
         'shdk'
     ];
+
+    public function penduduk()
+    {
+        return $this->belongsTo(Penduduk::class, 'id_penduduk');
+    }
 }

@@ -7,6 +7,7 @@ use App\Model\KartuKeluarga;
 use App\Model\Penduduk;
 use App\Model\PindahPergi;
 use Illuminate\Http\Request;
+use PDF;
 
 class PindahPergiController extends Controller
 {
@@ -158,5 +159,14 @@ class PindahPergiController extends Controller
     {
         $detailKK = KartuKeluarga::where('id_kk', $request->id)->first();
         return response()->json($detailKK);
+    }
+    public function print_pindah_pergi($id)
+    {
+        $pindah_pergi = PindahPergi::findOrFail($id);
+        $kartu_keluargas = KartuKeluarga::orderBy('no_kk', 'ASC')->get();
+        $penduduks = Penduduk::orderBy('nama', 'ASC')->get();
+        $countDetail = DetailPindahPergi::where('id_pindah_pergi', $pindah_pergi->id_pindah_pergi)->count();
+        $pdf = PDF::loadView('backend.pindah-pergi.print_pindah_pergi', compact('pindah_pergi', 'kartu_keluargas', 'penduduks', 'countDetail'));
+        return $pdf->stream();
     }
 }

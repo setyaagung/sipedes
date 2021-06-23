@@ -49,6 +49,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pindah-datang/{id}/print_pindah_datang', 'PindahDatangController@print_pindah_datang')->name('pindah-datang.print_pindah_datang');
     Route::resource('pindah-datang', 'PindahDatangController');
     //pindah pergi
+    Route::get('/pindah-pergi/{id}/print_pindah_pergi', 'PindahPergiController@print_pindah_pergi')->name('pindah-pergi.print_pindah_pergi');
     Route::get('/pindah-pergi/getkk', 'PindahPergiController@getKK');
     Route::resource('pindah-pergi', 'PindahPergiController');
     //user
