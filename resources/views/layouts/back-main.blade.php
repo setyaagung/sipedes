@@ -18,6 +18,7 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('assets/css/sb-admin-2.min.css')}}" rel="stylesheet">
     <!-- Custom styles for this page -->
+    <link rel="icon" type="image/png" href="{{ asset('img/pemkot.png')}}">
     <link href="{{ asset('assets/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ asset('assets/vendor/select2/css/select2.min.css')}}">
