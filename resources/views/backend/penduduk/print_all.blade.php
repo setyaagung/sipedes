@@ -47,7 +47,7 @@
     <div class="header text-center mt-3">
         <h5 class="font-weight-bold"><u>DATA PENDUDUK KELURAHAN PEDURUNGAN KIDUL</u></h5>
     </div>
-    <table class="table table-sm table-bordered table-striped">
+    <table class="table table-sm table-bordered">
         <thead class="thead-dark">
             <tr>
                 <th>NO</th>

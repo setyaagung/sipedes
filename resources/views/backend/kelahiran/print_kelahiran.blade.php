@@ -34,7 +34,7 @@
     <div class="header text-center mt-3">
         <h5 class="font-weight-bold"><u>SURAT KETERANGAN KELAHIRAN</u></h5>
     </div>
-    <table class="mb-4" style="font-size: 12px;width:100%">
+    <table style="font-size: 12px;width:100%">
         <tbody>
             <tr>
                 <td>Nama Kepala Keluarga</td>
@@ -52,12 +52,12 @@
                 </td>
             </tr>
             <tr>
-                <td>Nama</td>
+                <td>1. &nbsp;&nbsp;Nama</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>{{ $kelahiran->nama_bayi}}</td>
             </tr>
             <tr>
-                <td>Jenis Kelamin</td>
+                <td>2. &nbsp;&nbsp;Jenis Kelamin</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>
                     @if ( $kelahiran->jenis_kelamin == 'laki')
@@ -68,47 +68,47 @@
                 </td>
             </tr>
             <tr>
-                <td>Tempat Dilahirkan</td>
+                <td>3. &nbsp;&nbsp;Tempat Dilahirkan</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>{{ $kelahiran->tempat_dilahirkan}}</td>
             </tr>
             <tr>
-                <td>Tempat Kelahiran</td>
+                <td>4. &nbsp;&nbsp;Tempat Kelahiran</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>{{ $kelahiran->tempat_lahir}}</td>
             </tr>
             <tr>
-                <td>Hari dan Tanggal Lahir</td>
+                <td>5. &nbsp;&nbsp;Hari dan Tanggal Lahir</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>{{ \Carbon\Carbon::parse($kelahiran->tanggal_lahir)->isoFormat('dddd, D MMMM Y')}}</td>
             </tr>
             <tr>
-                <td>Pukul</td>
+                <td>6. &nbsp;&nbsp;Pukul</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>{{ \Carbon\Carbon::parse($kelahiran->waktu_lahir)->format('H:i')}}</td>
             </tr>
             <tr>
-                <td>Jenis Kelahiran</td>
+                <td>7. &nbsp;&nbsp;Jenis Kelahiran</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>{{ $kelahiran->jenis_lahir}}</td>
             </tr>
             <tr>
-                <td>Kelahiran Ke</td>
+                <td>8. &nbsp;&nbsp;Kelahiran Ke</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>{{ $kelahiran->kelahiran}}</td>
             </tr>
             <tr>
-                <td>Penolong Kelahiran</td>
+                <td>9. &nbsp;&nbsp;Penolong Kelahiran</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>{{ $kelahiran->penolong}}</td>
             </tr>
             <tr>
-                <td>Berat Bayi</td>
+                <td>10. &nbsp;&nbsp;Berat Bayi</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>{{ $kelahiran->berat_bayi}} Kg</td>
             </tr>
             <tr>
-                <td>Panjang Bayi</td>
+                <td>11. &nbsp;&nbsp;Panjang Bayi</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>{{ $kelahiran->panjang_bayi}} Cm</td>
             </tr>
@@ -116,27 +116,27 @@
                 <td><b><u>IBU</u></b></td>
             </tr>
             <tr>
-                <td>NIK</td>
+                <td>1. &nbsp;&nbsp;NIK</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>{{ $kelahiran->ibu->nik}}</td>
             </tr>
             <tr>
-                <td>Nama</td>
+                <td>2. &nbsp;&nbsp;Nama</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>{{ $kelahiran->ibu->nama}}</td>
             </tr>
             <tr>
-                <td>Tanggal Lahir</td>
+                <td>3. &nbsp;&nbsp;Tanggal Lahir</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>{{ \Carbon\Carbon::parse($kelahiran->ibu->tanggal_lahir)->isoFormat('D MMMM Y')}}</td>
             </tr>
             <tr>
-                <td>Pekerjaan</td>
+                <td>4. &nbsp;&nbsp;Pekerjaan</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>{{ $kelahiran->ibu->pekerjaan}}</td>
             </tr>
             <tr>
-                <td>Alamat</td>
+                <td>5. &nbsp;&nbsp;Alamat</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>
                     {{ $kelahiran->ibu->alamat_ktp}} RT {{ $kelahiran->ibu->rt}} RW {{ $kelahiran->ibu->rw}}
@@ -145,7 +145,7 @@
                 </td>
             </tr>
             <tr>
-                <td>Kewarganegaraan</td>
+                <td>6. &nbsp;&nbsp;Kewarganegaraan</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>{{ strtoupper($kelahiran->ibu->negara)}}</td>
             </tr>
@@ -153,27 +153,27 @@
                 <td><b><u>AYAH</u></b></td>
             </tr>
             <tr>
-                <td>NIK</td>
+                <td>1. &nbsp;&nbsp;NIK</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>{{ $kelahiran->ayah->nik}}</td>
             </tr>
             <tr>
-                <td>Nama</td>
+                <td>2. &nbsp;&nbsp;Nama</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>{{ $kelahiran->ayah->nama}}</td>
             </tr>
             <tr>
-                <td>Tanggal Lahir</td>
+                <td>3. &nbsp;&nbsp;Tanggal Lahir</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>{{ \Carbon\Carbon::parse($kelahiran->ayah->tanggal_lahir)->isoFormat('D MMMM Y')}}</td>
             </tr>
             <tr>
-                <td>Pekerjaan</td>
+                <td>4. &nbsp;&nbsp;Pekerjaan</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>{{ $kelahiran->ayah->pekerjaan}}</td>
             </tr>
             <tr>
-                <td>Alamat</td>
+                <td>5. &nbsp;&nbsp;Alamat</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>
                     {{ $kelahiran->ayah->alamat_ktp}} RT {{ $kelahiran->ayah->rt}} RW {{ $kelahiran->ayah->rw}}
@@ -182,7 +182,7 @@
                 </td>
             </tr>
             <tr>
-                <td>Kewarganegaraan</td>
+                <td>6. &nbsp;&nbsp;Kewarganegaraan</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>{{ strtoupper($kelahiran->ayah->negara)}}</td>
             </tr>
@@ -190,22 +190,22 @@
                 <td><b><u>PELAPOR</u></b></td>
             </tr>
             <tr>
-                <td>NIK</td>
+                <td>1. &nbsp;&nbsp;NIK</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>{{ $kelahiran->nik_pelapor}}</td>
             </tr>
             <tr>
-                <td>Nama</td>
+                <td>2. &nbsp;&nbsp;Nama</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>{{ $kelahiran->nama_pelapor}}</td>
             </tr>
             <tr>
-                <td>Umur</td>
+                <td>3. &nbsp;&nbsp;Umur</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>{{ $kelahiran->umur_pelapor}}</td>
             </tr>
             <tr>
-                <td>Jenis Kelamin</td>
+                <td>4. &nbsp;&nbsp;Jenis Kelamin</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>
                     @if ( $kelahiran->jk_pelapor == 'laki')
@@ -216,17 +216,15 @@
                 </td>
             </tr>
             <tr>
-                <td>Pekerjaan</td>
+                <td>5. &nbsp;&nbsp;Pekerjaan</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>{{ $kelahiran->pekerjaan_pelapor}}</td>
             </tr>
             <tr>
-                <td>Alamat</td>
+                <td>6. &nbsp;&nbsp;Alamat</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>
-                    {{ $kelahiran->alamat_pelapor}} RT {{ $kelahiran->ayah->rt}} RW {{ $kelahiran->ayah->rw}}
-                    Kel. {{ $kelahiran->ayah->kelurahan}} Kec. {{ $kelahiran->ayah->kecamatan}}
-                    {{ $kelahiran->ayah->kota}} {{ $kelahiran->ayah->provinsi}}
+                    {{ $kelahiran->alamat_pelapor}}
                 </td>
             </tr>
         </tbody>
@@ -244,11 +242,6 @@
                         <td>Kepala Desa/Lurah</td>
                         <td style="width: 50%"></td>
                         <td>Pelapor</td>
-                    </tr>
-                    <tr>
-                        <td><br></td>
-                        <td><br></td>
-                        <td><br></td>
                     </tr>
                     <tr>
                         <td><br></td>

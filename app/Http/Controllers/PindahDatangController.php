@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Model\DetailPindahDatang;
 use App\Model\PindahDatang;
 use Illuminate\Http\Request;
+use PDF;
 
 class PindahDatangController extends Controller
 {
@@ -165,5 +166,13 @@ class PindahDatangController extends Controller
         $pindah_datang = PindahDatang::findOrFail($id);
         $pindah_datang->delete();
         return redirect()->route('pindah-datang.index')->with('delete', 'Data mutasi pindah datang berhasil dihapus');
+    }
+
+    public function print_pindah_datang($id)
+    {
+        $pindah_datang = PindahDatang::findOrFail($id);
+        $count_detail = DetailPindahDatang::where('id_pindah_datang', $pindah_datang->id_pindah_datang)->count();
+        $pdf = PDF::loadView('backend.pindah-datang.print_pindah_datang', compact('pindah_datang', 'count_detail'));
+        return $pdf->stream();
     }
 }
