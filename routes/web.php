@@ -56,6 +56,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/permohonan-ktp/getpenduduk', 'PermohonanKtpController@getPenduduk');
     Route::get('/permohonan-ktp/{id}/print_permohonan_ktp', 'PermohonanKtpController@print_permohonan_ktp')->name('permohonan-ktp.print_permohonan_ktp');
     Route::resource('permohonan-ktp', 'PermohonanKtpController');
+    //permohonan kk
+    Route::get('/permohonan-kk/getpenduduk', 'PermohonanKartuKeluargaController@getPenduduk');
+    Route::resource('permohonan-kk', 'PermohonanKartuKeluargaController');
     //user
     Route::resource('user', 'UserController');
     Route::get('/update-status/{id}', 'UserController@update_status');

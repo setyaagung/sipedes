@@ -74,7 +74,7 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item {{ (request()->segment(1) == 'permohonan-ktp') ? 'active' : '' }}">
+    <li class="nav-item {{ (request()->segment(1) == 'permohonan-ktp') ? 'active' : '' }} {{ (request()->segment(1) == 'permohonan-kk') ? 'active' : '' }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
             aria-expanded="true" aria-controls="collapseFour">
             <i class="fas fa-fw fa-file-alt"></i>
@@ -83,6 +83,7 @@
         <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item {{ (request()->segment(1) == 'permohonan-ktp') ? 'active' : '' }}" href="{{ route('permohonan-ktp.index')}}">KTP</a>
+                <a class="collapse-item {{ (request()->segment(1) == 'permohonan-kk') ? 'active' : '' }}" href="{{ route('permohonan-kk.index')}}">Kartu Keluarga</a>
             </div>
         </div>
     </li>
