@@ -16,6 +16,18 @@
         table.table-bordered > tbody > tr > td{
             border:1px solid black;
         }
+        .big-checkbox{
+            transform: scale(1.5);
+            -webkit-transform: scale(1.5);
+        }
+        .box{
+            width: 100%;
+            border: 1px solid black;
+            padding-top: 2px;
+            padding-bottom: 1px;
+            padding-right: 5px;
+            padding-left: 5px;
+        }
     </style>
 </head>
 <body>

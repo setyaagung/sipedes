@@ -73,6 +73,21 @@
     </li>
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item {{ (request()->segment(1) == 'permohonan-ktp') ? 'active' : '' }}">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
+            aria-expanded="true" aria-controls="collapseFour">
+            <i class="fas fa-fw fa-file-alt"></i>
+            <span>Surat Permohonan</span>
+        </a>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item {{ (request()->segment(1) == 'permohonan-ktp') ? 'active' : '' }}" href="{{ route('permohonan-ktp.index')}}">KTP</a>
+            </div>
+        </div>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
     <!-- Nav Item - user -->
     <li class="nav-item {{ (request()->segment(1) == 'user') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('user.index') }}">
