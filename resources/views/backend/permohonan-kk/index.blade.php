@@ -59,6 +59,7 @@
                                             <td>{{ $permohonan_kk->no_kk_semula}}</td>
                                             <td>{{ $permohonan_kk->alasan}}</td>
                                             <td>
+                                                <a href="{{ route('permohonan-kk.print_permohonan_kk',$permohonan_kk->id_permohonan_kk)}}" class="btn btn-success btn-sm" target="_blank"><i class="fas fa-file"></i> Cetak</a>
                                                 <a href="{{ route('permohonan-kk.edit',$permohonan_kk->id_permohonan_kk)}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
                                                 <form action="{{ route('permohonan-kk.destroy', $permohonan_kk->id_permohonan_kk)}}" method="POST" class="d-inline">
                                                     @csrf

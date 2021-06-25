@@ -6,6 +6,7 @@ use App\Model\DetailPermohonanKartuKeluarga;
 use App\Model\Penduduk;
 use App\Model\PermohonanKartuKeluarga;
 use Illuminate\Http\Request;
+use PDF;
 
 class PermohonanKartuKeluargaController extends Controller
 {
@@ -126,5 +127,14 @@ class PermohonanKartuKeluargaController extends Controller
     {
         $detailPenduduk = Penduduk::where('id_penduduk', $request->id)->first();
         return response()->json($detailPenduduk);
+    }
+
+    public function print_permohonan_kk($id)
+    {
+        $permohonan_kk = PermohonanKartuKeluarga::findOrFail($id);
+        $penduduks = Penduduk::orderBy('nama', 'ASC')->get();
+        $countDetail = DetailPermohonanKartuKeluarga::where('id_permohonan_kk', $permohonan_kk->id_permohonan_kk)->count();
+        $pdf = PDF::loadView('backend.permohonan-kk.print_permohonan_kk', compact('permohonan_kk', 'penduduks', 'countDetail'));
+        return $pdf->stream();
     }
 }

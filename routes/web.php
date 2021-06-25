@@ -58,6 +58,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('permohonan-ktp', 'PermohonanKtpController');
     //permohonan kk
     Route::get('/permohonan-kk/getpenduduk', 'PermohonanKartuKeluargaController@getPenduduk');
+    Route::get('/permohonan-kk/{id}/print_permohonan_kk', 'PermohonanKartuKeluargaController@print_permohonan_kk')->name('permohonan-kk.print_permohonan_kk');
     Route::resource('permohonan-kk', 'PermohonanKartuKeluargaController');
     //user
     Route::resource('user', 'UserController');
