@@ -64,7 +64,7 @@
                 <td>4. &nbsp;&nbsp;Alamat</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>
-                    {{ strtoupper($permohonan_kk->penduduk->alamat_ktp)}} RT {{ $permohonan_kk->penduduk->rt}} RW {{ $permohonan_kk->penduduk->rw}}
+                    {{ strtoupper($permohonan_kk->penduduk->alamat_tinggal)}} RT {{ $permohonan_kk->penduduk->rt}} RW {{ $permohonan_kk->penduduk->rw}}
                     Kel. {{ strtoupper($permohonan_kk->penduduk->kelurahan)}} Kec. {{ strtoupper($permohonan_kk->penduduk->kecamatan)}}
                     {{ strtoupper($permohonan_kk->penduduk->kota)}} {{ strtoupper($permohonan_kk->penduduk->provinsi)}}
                 </td>
