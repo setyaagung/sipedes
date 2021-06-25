@@ -28,6 +28,10 @@
                             <option value="Suami" {{ $detail->shdk == 'Suami' ? 'selected':''}}>Suami</option>
                             <option value="Istri" {{ $detail->shdk == 'Istri' ? 'selected':''}}>Istri</option>
                             <option value="Anak" {{ $detail->shdk == 'Anak' ? 'selected':''}}>Anak</option>
+                            <option value="Family Lain" {{ $detail->shdk == 'Family Lain' ? 'selected':''}}>Family Lain</option>
+                            <option value="Cucu" {{ $detail->shdk == 'Cucu' ? 'selected':''}}>Cucu</option>
+                            <option value="Menantu" {{ $detail->shdk == 'Menantu' ? 'selected':''}}>Menantu</option>
+                            <option value="Mertua" {{ $detail->shdk == 'Mertua' ? 'selected':''}}>Mertua</option>
                         </select>
                     </td>
                 </tr>

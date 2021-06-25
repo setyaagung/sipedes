@@ -29,6 +29,10 @@
                         <option value="Suami">Suami</option>
                         <option value="Istri">Istri</option>
                         <option value="Anak">Anak</option>
+                        <option value="Family Lain">Family Lain</option>
+                        <option value="Cucu">Cucu</option>
+                        <option value="Menantu">Menantu</option>
+                        <option value="Mertua">Mertua</option>
                     </select>
                 </td>
                 <td>

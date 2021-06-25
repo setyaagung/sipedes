@@ -36,7 +36,7 @@
 </div>
 <div class="form-group">
     <label for="">Kelurahan</label>
-    <input type="text" class="form-control @error('kelurahan') is-invalid @enderror" name="kelurahan" value="{{ old('kelurahan') }}">
+    <input type="text" class="form-control @error('kelurahan') is-invalid @enderror" name="kelurahan" value="Pedurungan Kidul">
     @error('kelurahan')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
@@ -45,7 +45,7 @@
 </div>
 <div class="form-group">
     <label for="">Kecamatan</label>
-    <input type="text" class="form-control @error('kecamatan') is-invalid @enderror" name="kecamatan" value="{{ old('kecamatan') }}">
+    <input type="text" class="form-control @error('kecamatan') is-invalid @enderror" name="kecamatan" value="Pedurungan">
     @error('kecamatan')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
@@ -54,7 +54,7 @@
 </div>
 <div class="form-group">
     <label for="">Kota/Kabupaten</label>
-    <input type="text" class="form-control @error('kota') is-invalid @enderror" name="kota" value="{{ old('kota') }}">
+    <input type="text" class="form-control @error('kota') is-invalid @enderror" name="kota" value="Kota Semarang">
     @error('kota')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
@@ -63,7 +63,7 @@
 </div>
 <div class="form-group">
     <label for="">Provinsi</label>
-    <input type="text" class="form-control @error('provinsi') is-invalid @enderror" name="provinsi" value="{{ old('provinsi') }}">
+    <input type="text" class="form-control @error('provinsi') is-invalid @enderror" name="provinsi" value="Jawa Tengah">
     @error('provinsi')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>

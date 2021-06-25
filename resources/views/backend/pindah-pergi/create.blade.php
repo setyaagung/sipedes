@@ -98,6 +98,10 @@
                                     tr += '<option value="Suami">Suami</option>';
                                     tr += '<option value="Istri">Istri</option>';
                                     tr += '<option value="Anak">Anak</option>';
+                                    tr += '<option value="Family Lain">Family Lain</option>';
+                                    tr += '<option value="Cucu">Cucu</option>';
+                                    tr += '<option value="Menantu">Menantu</option>';
+                                    tr += '<option value="Mertua">Mertua</option>';
                                 tr += '</select>';
                             tr += '</td>';
                             tr += '<td>';

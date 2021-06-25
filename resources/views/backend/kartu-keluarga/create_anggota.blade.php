@@ -35,6 +35,10 @@
                                     <option value="Kepala Keluarga" {{ old('status') == 'Kepala Keluarga' ? 'selected':''}}>Kepala Keluarga</option>
                                     <option value="Istri" {{ old('status') == 'Istri' ? 'selected':''}}>Istri</option>
                                     <option value="Anak" {{ old('status') == 'Anak' ? 'selected':''}}>Anak</option>
+                                    <option value="Family Lain" {{ old('status') == 'Family Lain' ? 'selected':''}}>Family Lain</option>
+                                    <option value="Cucu" {{ old('status') == 'Cucu' ? 'selected':''}}>Cucu</option>
+                                    <option value="Menantu" {{ old('status') == 'Menantu' ? 'selected':''}}>Menantu</option>
+                                    <option value="Mertua" {{ old('status') == 'Mertua' ? 'selected':''}}>Mertua</option>
                                 </select>
                                 @error('status')
                                     <span class="invalid-feedback" role="alert">
