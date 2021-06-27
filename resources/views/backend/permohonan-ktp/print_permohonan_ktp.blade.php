@@ -3,18 +3,28 @@
 @section('title','Formulir Permohonan KTP')
 
 @section('content')
-    <div class="text-center">
-        <p class="font-weight-bold" style="font-size: 20px;margin-bottom: -5px">
-            PEMERINTAH KOTA SEMARANG
-        </p>
-        <p class="font-weight-bold" style="font-size: 22px">DINAS KEPENDUDUKAN DAN PENCATATAN SIPIL</p>
-        <p style="font-size: 14px;margin-top: -13px;margin-bottom: -10px">
-            Jl. Kanguru Raya No. 3 Telp. (024) 6712563 Fax. (024) 6707203
-            <br>
-            SEMARANG Kode Pos 50161
-        </p>
-        <hr style="border: 1px solid black">
-        <hr style="border: black;margin-top: -14px">
+    <div class="row" style="margin-bottom: -115px">
+        <div class="col-md-2">
+            <img src="{{ asset('img/pemkot-white.png')}}" class="img-fluid mt-2" style="width: 75px;height: 105px">
+        </div>
+        <div class="col-md-8">
+            <div class="text-center">
+                <p class="font-weight-bold" style="font-size: 20px;margin-bottom: -5px">
+                    PEMERINTAH KOTA SEMARANG
+                </p>
+                <p class="font-weight-bold" style="font-size: 22px">DINAS KEPENDUDUKAN DAN PENCATATAN SIPIL</p>
+                <p style="font-size: 14px;margin-top: -13px;margin-bottom: -10px">
+                    Jl. Kanguru Raya No. 3 Telp. (024) 6712563 Fax. (024) 6707203
+                    <br>
+                    SEMARANG Kode Pos 50161
+                </p>
+                <hr style="border: 1px solid black">
+                <hr style="border: black;margin-top: -14px">
+            </div>
+        </div>
+        <div class="col-md-2">
+
+        </div>
     </div>
     <div class="header text-center">
         <h5 class="font-weight-bold">
