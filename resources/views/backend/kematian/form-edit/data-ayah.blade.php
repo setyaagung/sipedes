@@ -14,17 +14,12 @@
 </div>
 <div class="form-group">
     <label for="">Nama Ayah</label>
-    <select id="id_ayah" name="id_ayah" class="form-control @error('id_ayah') is-invalid @enderror ayah" style="width: 100%;">
+    <select id="id_ayah" name="id_ayah" class="form-control ayah" style="width: 100%;">
         <option value=""></option>
         @foreach ($penduduks as $penduduk)
             <option value="{{ $penduduk->id_penduduk}}" {{ $kematian->id_ayah == $penduduk->id_penduduk ? 'selected':''}}>{{ $penduduk->nik}} - {{strtoupper($penduduk->nama)}}</option>
         @endforeach
     </select>
-    @error('id_ayah')
-        <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-    @enderror
 </div>
 
 <div class="form-group">

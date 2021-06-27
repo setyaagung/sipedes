@@ -132,30 +132,60 @@
             <tr>
                 <td>1. &nbsp;&nbsp;NIK</td>
                 <td>&nbsp;:&nbsp;</td>
-                <td>{{ $kematian->ibu->nik}}</td>
+                <td>
+                    @if ($kematian->id_ibu == null)
+
+                    @else
+                        {{ $kematian->ibu->nik}}
+                    @endif
+                </td>
             </tr>
             <tr>
                 <td>2. &nbsp;&nbsp;Nama</td>
                 <td>&nbsp;:&nbsp;</td>
-                <td>{{ $kematian->ibu->nama}}</td>
+                <td>
+                    @if ($kematian->id_ibu == null)
+
+                    @else
+                        {{ $kematian->ibu->nama}}
+                    @endif
+                </td>
             </tr>
             <tr>
                 <td>3. &nbsp;&nbsp;Tanggal Lahir</td>
                 <td>&nbsp;:&nbsp;</td>
-                <td>{{ \Carbon\Carbon::parse($kematian->ibu->tanggal_lahir)->isoFormat('D MMMM Y')}}</td>
+                <td>
+                    @if ($kematian->id_ibu == null)
+
+                    @else
+                        {{ \Carbon\Carbon::parse($kematian->ibu->tanggal_lahir)->isoFormat('D MMMM Y')}}
+                    @endif
+                </td>
             </tr>
             <tr>
                 <td>4. &nbsp;&nbsp;Pekerjaan</td>
                 <td>&nbsp;:&nbsp;</td>
-                <td>{{ $kematian->ibu->pekerjaan}}</td>
+                <td>
+                    @if ($kematian->id_ibu == null)
+
+                    @else
+                        {{ $kematian->ibu->pekerjaan}}
+                    @endif
+                </td>
             </tr>
             <tr>
                 <td>5. &nbsp;&nbsp;Alamat</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>
-                    {{ $kematian->ibu->alamat_ktp}} RT {{ $kematian->ibu->rt}} RW {{ $kematian->ibu->rw}}
-                    Kel. {{ $kematian->ibu->kelurahan}} Kec. {{ $kematian->ibu->kecamatan}}
-                    {{ $kematian->ibu->kota}} {{ $kematian->ibu->provinsi}}
+                    @if ($kematian->id_ibu == null)
+                        {{ $kematian->penduduk->alamat_ktp}} RT {{ $kematian->penduduk->rt}} RW {{ $kematian->penduduk->rw}}
+                        Kel. {{ $kematian->penduduk->kelurahan}} Kec. {{ $kematian->penduduk->kecamatan}}
+                        {{ $kematian->penduduk->kota}} {{ $kematian->penduduk->provinsi}}
+                    @else
+                        {{ $kematian->ibu->alamat_ktp}} RT {{ $kematian->ibu->rt}} RW {{ $kematian->ibu->rw}}
+                        Kel. {{ $kematian->ibu->kelurahan}} Kec. {{ $kematian->ibu->kecamatan}}
+                        {{ $kematian->ibu->kota}} {{ $kematian->ibu->provinsi}}
+                    @endif
                 </td>
             </tr>
             <tr>
@@ -164,30 +194,60 @@
             <tr>
                 <td>1. &nbsp;&nbsp;NIK</td>
                 <td>&nbsp;:&nbsp;</td>
-                <td>{{ $kematian->ayah->nik}}</td>
+                <td>
+                    @if ($kematian->id_ayah == null)
+
+                    @else
+                        {{ $kematian->ayah->nik}}
+                    @endif
+                </td>
             </tr>
             <tr>
                 <td>2. &nbsp;&nbsp;Nama</td>
                 <td>&nbsp;:&nbsp;</td>
-                <td>{{ $kematian->ayah->nama}}</td>
+                <td>
+                    @if ($kematian->id_ayah == null)
+
+                    @else
+                        {{ $kematian->ayah->nama}}
+                    @endif
+                </td>
             </tr>
             <tr>
                 <td>3. &nbsp;&nbsp;Tanggal Lahir</td>
                 <td>&nbsp;:&nbsp;</td>
-                <td>{{ \Carbon\Carbon::parse($kematian->ayah->tanggal_lahir)->isoFormat('D MMMM Y')}}</td>
+                <td>
+                    @if ($kematian->id_ayah == null)
+
+                    @else
+                        {{ \Carbon\Carbon::parse($kematian->ayah->tanggal_lahir)->isoFormat('D MMMM Y')}}
+                    @endif
+                </td>
             </tr>
             <tr>
                 <td>4. &nbsp;&nbsp;Pekerjaan</td>
                 <td>&nbsp;:&nbsp;</td>
-                <td>{{ $kematian->ayah->pekerjaan}}</td>
+                <td>
+                    @if ($kematian->id_ayah == null)
+
+                    @else
+                        {{ $kematian->ayah->pekerjaan}}
+                    @endif
+                </td>
             </tr>
             <tr>
                 <td>5. &nbsp;&nbsp;Alamat</td>
                 <td>&nbsp;:&nbsp;</td>
                 <td>
-                    {{ $kematian->ayah->alamat_ktp}} RT {{ $kematian->ayah->rt}} RW {{ $kematian->ayah->rw}}
-                    Kel. {{ $kematian->ayah->kelurahan}} Kec. {{ $kematian->ayah->kecamatan}}
-                    {{ $kematian->ayah->kota}} {{ $kematian->ayah->provinsi}}
+                    @if ($kematian->id_ayah == null)
+                        {{ $kematian->penduduk->alamat_ktp}} RT {{ $kematian->penduduk->rt}} RW {{ $kematian->penduduk->rw}}
+                        Kel. {{ $kematian->penduduk->kelurahan}} Kec. {{ $kematian->penduduk->kecamatan}}
+                        {{ $kematian->penduduk->kota}} {{ $kematian->penduduk->provinsi}}
+                    @else
+                        {{ $kematian->ayah->alamat_ktp}} RT {{ $kematian->ayah->rt}} RW {{ $kematian->ayah->rw}}
+                        Kel. {{ $kematian->ayah->kelurahan}} Kec. {{ $kematian->ayah->kecamatan}}
+                        {{ $kematian->ayah->kota}} {{ $kematian->ayah->provinsi}}
+                    @endif
                 </td>
             </tr>
             <tr>
