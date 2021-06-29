@@ -21,23 +21,25 @@
             <span>Dashboard</span>
         </a>
     </li>
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item {{ (request()->segment(1) == 'penduduk') ? 'active' : '' }} {{ (request()->segment(1) == 'kartu-keluarga') ? 'active' : '' }}">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Master Data</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item {{ (request()->segment(1) == 'penduduk') ? 'active' : '' }}" href="{{ route('penduduk.index')}}">Penduduk</a>
-                <a class="collapse-item {{ (request()->segment(1) == 'kartu-keluarga') ? 'active' : '' }}" href="{{ route('kartu-keluarga.index')}}">Kartu Keluarga</a>
+    @if (Auth::user()->id_role == 1)
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item {{ (request()->segment(1) == 'penduduk') ? 'active' : '' }} {{ (request()->segment(1) == 'kartu-keluarga') ? 'active' : '' }}">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Master Data</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item {{ (request()->segment(1) == 'penduduk') ? 'active' : '' }}" href="{{ route('penduduk.index')}}">Penduduk</a>
+                    <a class="collapse-item {{ (request()->segment(1) == 'kartu-keluarga') ? 'active' : '' }}" href="{{ route('kartu-keluarga.index')}}">Kartu Keluarga</a>
+                </div>
             </div>
-        </div>
-    </li>
-    <!-- Divider -->
+        </li>
+        <!-- Divider -->
+    @endif
     <hr class="sidebar-divider my-0">
     <!-- Nav Item - kelahiran -->
     <li class="nav-item {{ (request()->segment(1) == 'kelahiran') ? 'active' : '' }}">
@@ -87,15 +89,17 @@
             </div>
         </div>
     </li>
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
-    <!-- Nav Item - user -->
-    <li class="nav-item {{ (request()->segment(1) == 'user') ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('user.index') }}">
-            <i class="fas fa-fw fa-user"></i>
-            <span>Kelola Pengguna</span>
-        </a>
-    </li>
+    @if (Auth::user()->id_role == 1)
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+        <!-- Nav Item - user -->
+        <li class="nav-item {{ (request()->segment(1) == 'user') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('user.index') }}">
+                <i class="fas fa-fw fa-user"></i>
+                <span>Kelola Pengguna</span>
+            </a>
+        </li>
+    @endif
 
 
     <hr class="sidebar-divider">
