@@ -59,13 +59,15 @@
                                             <td>{{ $pindah_pergi->kk->penduduk->nama}}</td>
                                             <td>{{ $pindah_pergi->alasan_pindah}}</td>
                                             <td>
-                                                <a href="{{ route('pindah-pergi.print_pindah_pergi',$pindah_pergi->id_pindah_pergi)}}" class="btn btn-success btn-sm" target="_blank"><i class="fas fa-file"></i> Cetak</a>
-                                                <a href="{{ route('pindah-pergi.edit',$pindah_pergi->id_pindah_pergi)}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
-                                                <form action="{{ route('pindah-pergi.destroy', $pindah_pergi->id_pindah_pergi)}}" method="POST" class="d-inline">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data ini??')"><i class="fas fa-trash"></i> Hapus</button>
-                                                </form>
+                                                @if (Auth::user()->id_role == 1)
+                                                    <a href="{{ route('pindah-pergi.print_pindah_pergi',$pindah_pergi->id_pindah_pergi)}}" class="btn btn-success btn-sm" target="_blank"><i class="fas fa-file"></i> Cetak</a>
+                                                    <a href="{{ route('pindah-pergi.edit',$pindah_pergi->id_pindah_pergi)}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
+                                                    <form action="{{ route('pindah-pergi.destroy', $pindah_pergi->id_pindah_pergi)}}" method="POST" class="d-inline">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data ini??')"><i class="fas fa-trash"></i> Hapus</button>
+                                                    </form>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach
