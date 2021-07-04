@@ -27,7 +27,7 @@
                                 <select name="id_role" id="id_role" class="form-control @error('id_role') is-invalid @enderror" required>
                                     <option value="">-- Pilih Hak Akses --</option>
                                     @foreach ($roles as $role)
-                                        <option value="{{ $role->id_role}}">{{ strtoupper($role->nama_role)}}</option>
+                                        <option value="{{ $role->id_role}}" {{ old('id_role') == $role->id_role ? 'selected':''}}>{{ strtoupper($role->nama_role)}}</option>
                                     @endforeach
                                 </select>
                                 @error('id_role')
